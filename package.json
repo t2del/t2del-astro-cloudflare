@@ -16,7 +16,11 @@
 		"@astrojs/mdx": "4.3.13",
 		"@astrojs/rss": "4.0.14",
 		"@astrojs/sitemap": "3.6.1",
+		"@tailwindcss/vite": "^4.2.4",
+		"@tailwindcss/typography": "^0.5.19",
 		"astro": "5.16.9",
+		"daisyui": "^5.5.19",
+		"tailwindcss": "^4.2.4",
 		"typescript": "5.9.3"
 	},
 	"devDependencies": {

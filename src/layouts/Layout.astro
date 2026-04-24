@@ -1,0 +1,38 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/common/ScrollToTop.astro";
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+		<BaseHead title={title} description={description} />
+	</head>
+  <body
+    class="text-base-content mx-auto grid h-full min-h-dvh grid-rows-[auto_1fr_auto]"
+  >
+    <header class="animate-fade-down sticky top-0 z-50">
+      <Header />
+    </header>
+    <main>
+      <div class="mx-auto h-full max-w-[140rem] px-2 py-10">
+        <slot />
+      </div>
+    </main>
+    <footer class="footer bg-base-200 animate-fade-up">
+      <div class="mx-auto w-full max-w-[140rem] px-2 py-6">
+        <Footer />
+      </div>
+    </footer>
+    <ScrollToTop />
+  </body>
+</html>
+
+<script>
+  import { animateOnScroll } from "../scripts/script";
+  animateOnScroll();
+</script>
