@@ -14,22 +14,27 @@ const {
   <form id="my-form" class="contact-form">
     <input type="hidden" name="form-name" value="contact" />
         
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
+        <div class="flex flex-col gap-2 form-group">
+          <label for="name"></label>
+          <input type="text" id="name" name="name" required class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Your name"/>
         </div>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
+        <div class="flex flex-col gap-2 form-group">
+          <label for="email"></label>
+          <input type="email" id="email" name="email" required class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Email"/>
         </div>
 
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+        <div class="flex flex-col gap-2 form-group">
+          <label for="message"></label>
+          <textarea id="message" name="message" required class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Your message"></textarea>
         </div>
 
-        <button type="submit" id="submit-btn">Send Message</button>
+        <button
+        type="submit" id="submit-btn"
+        class="cursor-pointer inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+        Submit
+      </button>
+
   </form>
   </div>
 </section>
