@@ -36,8 +36,8 @@ export const config = {
   /** Number of blog posts displayed per page */
   postsPerPage: 6,
   projectsPerPage: 8,
-    WP_BLOG_LIST: "https://block.t2del.com/wp-json/wp/v2/posts?_embed",
-    WP_BLOG_POST: "https://block.t2del.com/wp-json/wp/v2/posts",
+    WP_BLOG_LIST: "https://denn-block.instawp.xyz/wp-json/wp/v2/posts?_embed",
+    WP_BLOG_POST: "https://denn-block.instawp.xyz/wp-json/wp/v2/posts",
   NUM_POSTS_ON_HOMEPAGE: 4,
   NUM_WORKS_ON_HOMEPAGE: 3,
   NUM_PROJECTS_ON_HOMEPAGE: 4,

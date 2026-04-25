@@ -1,0 +1,86 @@
+---
+export const prerender = true;
+
+import { config } from "@/consts";
+import { locale } from "@consts";
+import Layout from "@/layouts/Layout.astro";
+import Pagination from "@/components/navigation/Pagination.astro";
+	
+// --- Astro Component Frontmatter ---
+export async function getStaticPaths({ paginate }: { paginate: (items: any[], options: { pageSize: number }) => any }) {
+
+  // 1. Fetch the *first* page to get the total number of pages from headers
+  const initialResponse = await fetch(`${config.WP_BLOG_LIST}&per_page=${config.NUM_POSTS_ON_HOMEPAGE}&page=1`);
+  
+  // You need to access the header to get the total pages
+  const totalPages = parseInt(initialResponse.headers.get('X-WP-TotalPages') || '1', 10);
+  
+  // 2. Fetch ALL posts across all pages (or use a strategy to fetch only the needed page data in a loop)
+  // For simplicity and SSG, you may need to fetch all data or loop through all pages:
+  
+  const allPosts = [];
+  for (let i = 1; i <= totalPages; i++) {
+    const pageResponse = await fetch(`${config.WP_BLOG_LIST}&per_page=${config.NUM_POSTS_ON_HOMEPAGE}&page=${i}`);
+    const posts = await pageResponse.json();
+    allPosts.push(...posts);
+  }
+
+  // 3. Use Astro's paginate function on the full array of data
+  // Astro will generate the pages and slice the data for you.
+  return paginate(allPosts, { pageSize: config.NUM_POSTS_ON_HOMEPAGE });
+}
+
+// Destructure the `page` prop, which contains the data for the current page
+const { page } = Astro.props as { page: { data: any[], currentPage: number, lastPage: number, url: { prev?: string, next?: string } } };
+
+
+const title = "Blog";
+const titleLayout = `Blog — Page ${page.currentPage}`;
+const description = "Blogs fetched from WordPress CMS.";
+
+---
+
+<Layout title={titleLayout} description={description}>
+  <section class="animate-fade-down text-center">
+    <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
+      <h1 class="text-lg font-semibold">{description}</h1>
+    </div>
+
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  2xl:grid-cols-4">
+      
+      {page.data.map(post => (
+        <article class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+          <a href={`/blog/wp-static/${post.slug}/`}>
+          <img 
+            alt={`${post.title.rendered}`} 
+            title={`${post.title.rendered}`}
+            src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url  || '/placeholder.jpg'}`}  
+            class="h-56 w-full object-cover mt-0 mb-0" 
+            loading="eager" 
+            style={`view-transition-name: vt-post-featured-image-${post.slug};`}
+          />
+          <div class="bg-white p-4 sm:p-6">
+            <time datetime={post.date}>
+              {new Date(post.date).toLocaleDateString(
+                locale.date.locale,
+                locale.date.options,
+              )}
+            </time>
+            <a href={`/blog/wp-static/${post.slug}/`}>
+              <h3 class="mt-0.5 text-lg text-gray-900" set:html={post.title.rendered}></h3>
+            </a>
+            <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500" set:html={post.excerpt.rendered}></p>
+          </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <Pagination
+      totalPages={page.lastPage}
+      currentPage={page}
+      baseUrl=""
+    />
+   
+  </section>
+</Layout>

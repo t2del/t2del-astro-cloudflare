@@ -1,0 +1,71 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import { config } from "@/consts";
+
+
+export async function getStaticPaths() { 
+  // Fetch all posts to get their slugs. We only ask for the fields we need 
+  // to minimize payload size and speed up the build.
+  // We use `per_page=100` to try and grab as many as possible in one go, 
+  // but you might need a loop if you have more than 100 posts.
+  const response = await fetch(`${config.WP_BLOG_POST}?per_page=100&_fields=slug`);
+  const posts = await response.json();
+
+  // Map the slugs to the format Astro needs for getStaticPaths
+  return posts.map((post: any) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+// 1. Destructure the slug from params (defined in getStaticPaths)
+const { slug } = Astro.params;
+
+// 2. Fetch the specific post data using the slug
+
+// Fetch the post matching the slug. The `slug` query parameter is how you look it up.
+const response = await fetch(`${config.WP_BLOG_POST}?slug=${slug}&_embed`);
+
+// The WordPress API returns an array even when querying by slug, so we take the first item
+const postData = await response.json();
+
+const post = postData[0]; 
+
+// Handle case where post is not found (though rare with correct slug generation)
+if (!post) {
+  return Astro.redirect('/404'); // Or render a custom not-found page
+}
+
+// Helper to format the date
+// const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+// const formattedDate = new Date(post.date).toLocaleDateString('en-US', dateOptions);
+
+// Use a cleaner title variable
+const title = post.title.rendered;
+---
+
+<Layout
+  title={post.title.rendered}
+  description={post.content.rendered.replace(/<[^>]+>/g, "").substring(0, 150) + "..."}
+  image={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`}
+  type="article"
+
+>
+  <article>
+
+    <h1 set:html={post.title.rendered} />
+    {
+   
+        <div class="">
+          <img src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`} 
+          alt={post.title.rendered} 
+          title={post.title.rendered} 
+          style={`view-transition-name: vt-post-featured-image-${post.slug};`} 
+          loading="eager" />
+        </div>
+
+    }
+    <hr />
+      <div class="content-populated" set:html={post.content.rendered}></div>
+  </article>
+</Layout>
