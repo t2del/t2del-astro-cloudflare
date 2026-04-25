@@ -1,0 +1,68 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { config } from "@consts";
+import Pagination from "@components/navigation/Pagination.astro";
+import Card from '@components/common/Card.astro';
+const posts = (
+  await getCollection("projectsCollection", ({ data }) => data.draft !== true)
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const postsPerPage = config.projectsPerPage;
+const totalPages = Math.ceil(posts.length / postsPerPage);
+const currentPage = 1;
+const paginatedPosts = posts.slice(0, postsPerPage);
+
+const title = "Project";
+const description = "A collection of Projects i have worked on.";
+
+---
+<Layout title={title} description={description} ga4={true} clarity={true}>
+  <section class="animate-fade-down text-center">
+      <h1 class="notshow frombottom font-semibold " style="view-transition-name: vt-post-featured-title">
+        Dennis Macapagal<span class="text-xl">👋🏻</span>
+      </h1>
+      <article class="space-y-4">
+          <p class="animate">
+            A Full-Stack Developer with more than 10 years of relevant
+            experience in web programming. Bringing up-to-date industry skills
+            in front-end and back-end technology such as PHP, HTML, CSS,
+            JavaScript, MySQL and hands-on experience with CMS such as
+            WordPress. Detail-oriented and motivated to drive project completion
+            on target with exceptional quality and guaranteed client
+            satisfaction.
+          </p>
+          <ul class="flex flex-wrap gap-2" id="">
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">PHP</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">HTML</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">CSS</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">JavaScript (jQuery, Ajax, Json)</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">Bootstrap</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">Sass / Less</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">WordPress/ Woocommerce</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">MySQL</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">OpenCart</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">Laravel</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">RestAPI</li>
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">GIT</li>
+          </ul>
+        </article>
+  </section>
+
+  <section class="animate space-y-6 mt-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h1>{title} </h1>
+          <p class="text-lg font-semibold">{description}</p>
+        </div>
+        <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  2xl:grid-cols-4">
+        {
+          paginatedPosts.map((post, idx) => (
+            <Card
+              data={post.data}
+              url={`projects/${post.id}/`}
+            />
+          ))
+        }
+      </div>
+  </section>
+</Layout>

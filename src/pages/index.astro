@@ -1,9 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { locale } from "@/consts";
+const work = (
+  await getCollection("workCollection", ({ data }) => data.draft !== true)
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const postsPerPage = 5;
 
-const title = "T2del";
+
 const titleLayout = `T2del`;
 const description = "Minimal and lightweight blog and portfolio.";
+
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true}>
   <section class="animate-fade-down text-center">
@@ -37,4 +44,41 @@ const description = "Minimal and lightweight blog and portfolio.";
         </article>
   </section>
 
+  <section class="animate space-y-6 mt-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold ">Work Experience</h5>
+          <!-- <Link href="/work"> See all work </Link> -->
+        </div>
+          {
+            work.map((entry) => (
+              <article class="flex flex-col space-y-4">
+                <h3 class="text-xl font-medium ">{entry.data.company}</h3>
+                <h4 class="text-md font-medium ">{entry.data.role}</h4>
+                <div class="text-sm opacity-75">
+                  <time datetime={new Date(entry.data.dateStart).toISOString()}>
+                    {new Date(entry.data.dateStart).toLocaleDateString(
+                      locale.date.locale,
+                      locale.date.options,
+                    )}
+                  </time>
+                   - 
+                  {new Date(entry.data.dateEnd).getTime() ? (
+                  <time datetime={new Date(entry.data.dateEnd).toISOString()}>
+                    {new Date(entry.data.dateEnd).toLocaleDateString(
+                    locale.date.locale,
+                    locale.date.options,
+                    )}
+                  </time>
+                  ) : (
+                  <span>Present</span>
+                  )}
+                </div>
+                
+
+                <div set:html={entry.body} class="pl-5"></div>
+                
+              </article>
+            ))
+          }
+  </section>
 </Layout>
