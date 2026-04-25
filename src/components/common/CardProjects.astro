@@ -1,0 +1,38 @@
+---
+import { Picture, } from 'astro:assets';
+import { locale } from "@consts";
+const { data, url  } = Astro.props;
+---
+<article class="overflow-hidden rounded shadow-md text-slate-500 shadow-slate-200" >
+    <a href={url} class="no-underline block">
+        {data.image && (
+        <Picture
+            formats={[ 'webp']}
+            class="aspect-video w-full object-cover"
+            src={`${data.image.src}`}
+            alt={data.image.alt}
+            width={720}
+            height={360}
+            loading={"lazy"}
+            sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+        />
+        )}
+        <h3 class="text-xl font-medium text-slate-600 dark:text-white mt-2 " set:html={data.title}></h3>
+        <p class="text-sm text-slate-400 dark:text-gray-500 mt-2 mb-2">
+        <time datetime={data.publishDate.toISOString()}>
+            {data.publishDate.toLocaleDateString(
+            locale.date.locale,
+            locale.date.options,
+            )}
+        </time>
+        </p>
+        <p class="mb-2 hidden" set:html={data.description}></p>
+    </a>
+</article>
+<style>
+    :where(picture):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+</style>

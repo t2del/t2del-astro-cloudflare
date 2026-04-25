@@ -173,6 +173,7 @@ svg {
     transparent
   ) !important;
   --pagefind-ui-bg: var(--color-base-100) !important;
+
 }
 
 .pagefind-ui__form::before {
@@ -207,6 +208,6 @@ svg {
   @apply !max-h-[60vh];
 }
 
-.dark\:text-white {
+[data-theme="dark"] .dark\:text-white {
   @apply text-white;
 }
