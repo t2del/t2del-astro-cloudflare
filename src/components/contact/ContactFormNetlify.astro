@@ -1,15 +1,38 @@
-<!-- modify this form HTML and place wherever you want your form -->
-<div data-fs-success>Thanks for your submission!</div>
-<div data-fs-error>Oops! There was a problem submitting your form.</div>
-<form id="my-form">
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" data-fs-field />
-  <span data-fs-error="email"></span>
-  <label for="message">Message:</label>
-  <input type="text" id="message" name="message" data-fs-field />
-  <span data-fs-error="message"></span>
-  <button type="submit" data-fs-submit-btn>Submit</button>
-</form>
+---
+const {
+  title = "Contact us",
+  description = "Fill out the form and we'll get back to you as soon as possible",
+} = Astro.props;
+---
+<section class="container mx-auto pb-12">
+  <div class="contact-container">
+    <h2 class="mt-2 mb-2 text-3xl font-bold">{title}</h2>
+    <p class="text-base-content/70">{description}</p>
+  <!-- modify this form HTML and place wherever you want your form -->
+  <div data-fs-success>Thanks for your submission!</div>
+  <div data-fs-error>Oops! There was a problem submitting your form.</div>
+  <form id="my-form" class="contact-form">
+    <input type="hidden" name="form-name" value="contact" />
+        
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn">Send Message</button>
+  </form>
+  </div>
+</section>
 
 <!-- Place these scripts at the end of the body tag -->
 <script is:inline>
