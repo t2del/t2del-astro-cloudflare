@@ -3,11 +3,11 @@ import { Picture, } from 'astro:assets';
 import { locale } from "@consts";
 const { data, url  } = Astro.props;
 ---
-<article class="overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200" >
+<article class="overflow-hidden rounded shadow-md text-slate-500 shadow-slate-200" >
     <a href={url} class="no-underline block">
         {data.image && (
         <Picture
-            formats={['avif', 'webp']}
+            formats={[ 'webp']}
             class="aspect-video w-full object-cover"
             src={`${data.image.src}`}
             alt={data.image.alt}
@@ -17,8 +17,8 @@ const { data, url  } = Astro.props;
             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
         />
         )}
-        <h3 class="text-xl font-medium text-slate-700">{data.title}</h3>
-        <p class="text-sm text-slate-400">
+        <h3 class="text-xl font-medium text-slate-600  mt-2 " set:html={data.title}></h3>
+        <p class="text-sm text-slate-400 dark:text-gray-500 mt-2 mb-2">
         <time datetime={data.publishDate.toISOString()}>
             {data.publishDate.toLocaleDateString(
             locale.date.locale,
@@ -26,7 +26,7 @@ const { data, url  } = Astro.props;
             )}
         </time>
         </p>
-        <p class="mb-2 hidden">{data.description}</p>
+        <p class="mb-2 hidden" set:html={data.description}></p>
     </a>
 </article>
 <style>

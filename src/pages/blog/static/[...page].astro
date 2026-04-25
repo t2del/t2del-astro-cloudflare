@@ -50,28 +50,31 @@ const description = "Blogs fetched from WordPress CMS.";
       
       {page.data.map(post => (
         <article class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
-          <a href={`/blog/wp-static/${post.slug}/`}>
-          <img 
-            alt={`${post.title.rendered}`} 
-            title={`${post.title.rendered}`}
-            src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url  || '/placeholder.jpg'}`}  
-            class="h-56 w-full object-cover mt-0 mb-0" 
-            loading="eager" 
-            style={`view-transition-name: vt-post-featured-image-${post.slug};`}
-          />
-          <div class="bg-white p-4 sm:p-6">
-            <time datetime={post.date}>
-              {new Date(post.date).toLocaleDateString(
-                locale.date.locale,
-                locale.date.options,
-              )}
-            </time>
-            <a href={`/blog/wp-static/${post.slug}/`}>
-              <h3 class="mt-0.5 text-lg text-gray-900" set:html={post.title.rendered}></h3>
-            </a>
-            <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500" set:html={post.excerpt.rendered}></p>
-          </div>
+          <a href={`/blog/static/${post.slug}/`}>
+            <img 
+              alt={`${post.title.rendered}`} 
+              title={`${post.title.rendered}`}
+              src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url  || '/placeholder.jpg'}`}  
+              class="h-56 w-full object-cover mt-0 mb-0" 
+              loading="eager" 
+              style={`view-transition-name: vt-post-featured-image-${post.slug};`}
+            />
           </a>
+          <div class="p-4 sm:p-6">
+            <span class="text-sm text-gray-400 dark:text-gray-500">
+              <time datetime={post.date}>
+                {new Date(post.date).toLocaleDateString(
+                  locale.date.locale,
+                  locale.date.options,
+                )}
+              </time>
+            </span>
+            
+            <a href={`/blog/static/${post.slug}/`}>
+              <h3 class="text-gray-900  mt-0.5 text-lg font-semibold" set:html={post.title.rendered}></h3>
+            </a>
+            <p class="text-gray-500  mt-2 line-clamp-3 text-sm/relaxed " set:html={post.excerpt.rendered}></p>
+          </div>
         </article>
       ))}
     </div>
@@ -79,7 +82,7 @@ const description = "Blogs fetched from WordPress CMS.";
     <Pagination
       totalPages={page.lastPage}
       currentPage={page}
-      baseUrl=""
+      baseUrl="/blog/static/"
     />
    
   </section>

@@ -206,3 +206,7 @@ svg {
   @apply !overflow-auto;
   @apply !max-h-[60vh];
 }
+
+.dark\:text-white {
+  @apply text-white;
+}
