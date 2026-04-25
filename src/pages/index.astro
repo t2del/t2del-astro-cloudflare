@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { locale } from "@/consts";
+import ContactFormNetlify  from "@/components/contact/ContactFormNetlify.astro";
+
 const work = (
   await getCollection("workCollection", ({ data }) => data.draft !== true)
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
@@ -80,5 +82,11 @@ const description = "Minimal and lightweight blog and portfolio.";
               </article>
             ))
           }
+  </section>
+
+  <section class="animate-fade-down text-center ">
+    <article class="space-y-4">
+        <ContactFormNetlify title="Contact" description="Fill out the form and we'll get back to you as soon as possible" />
+    </article>
   </section>
 </Layout>
