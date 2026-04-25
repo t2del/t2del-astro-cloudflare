@@ -32,7 +32,7 @@ export const config = {
   /** Site's deploy URL - must start with https:// or http:// */
   url: "https://www.t2del.com/",
   /** Base path for deployment (e.g. "/blog" for GitHub Pages) */
-  base: "",
+  base: "/",
   /** Number of blog posts displayed per page */
   postsPerPage: 6,
   projectsPerPage: 8,

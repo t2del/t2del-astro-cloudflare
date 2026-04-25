@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { config, locale } from "@consts";
+
+// import RssFeed from "@components/common/RssFeed.astro";
+import Pagination from "@components/navigation/Pagination.astro";
+
+import Card from '@components/common/Card.astro';
+
+// Generate all pagination pages
+export async function getStaticPaths() {
+  const posts = await getCollection("projectsCollection", ({ data }) => data.draft !== true);
+  const postsPerPage = config.projectsPerPage;
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  // Pages from 2 to totalPages (because /project/ is index.astro)
+  return Array.from({ length: totalPages - 1 }).map((_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const posts = (
+  await getCollection("projectsCollection", ({ data }) => data.draft !== true)
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const postsPerPage = config.projectsPerPage;
+const totalPages = Math.ceil(posts.length / postsPerPage);
+
+// Get page number from params
+const { page } = Astro.params;
+const currentPage = Number(page);
+
+// Redirect to /project/, if page 1
+if (currentPage === 1) {
+  return Astro.redirect(`${config.base}//`);
+}
+
+// // 404 if the page does not exist
+// if (currentPage > totalPages || currentPage < 1) {
+//   throw Astro.redirect("/404");
+// }
+
+const offset = (currentPage - 1) * postsPerPage;
+const paginatedPosts = posts.slice(offset, offset + postsPerPage);
+
+const title = "Project";
+const titleLayout = `Project — Page ${currentPage}`;
+const description = "A collection of Projects i have worked on.";
+---
+
+<Layout title={titleLayout} description={description}  ga4={true} clarity={true}>
+  <section class="animate-fade-down text-center p-5">
+        <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
+      <h1 class="text-lg font-semibold">{description}</h1>
+    </div>
+
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  2xl:grid-cols-4">
+      {
+        paginatedPosts.map((post, idx) => (
+          <Card
+            data={post.data}
+            url={`/projects/${post.id}/`}
+          />
+        ))
+      }
+    </div>
+
+    <!-- Pagination -->
+    <Pagination
+      totalPages={totalPages}
+      currentPage={currentPage}
+      baseUrl="/projects"
+    />
+  </section>
+</Layout>
