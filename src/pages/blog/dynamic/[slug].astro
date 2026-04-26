@@ -1,0 +1,43 @@
+---
+export const prerender = false;
+// Set the header for the CDN/Edge
+Astro.response.headers.set(
+  'Cache-Control', 
+  'public, s-maxage=3600, stale-while-revalidate=604800, stale-if-error=604800'
+);
+import Layout from "@/layouts/Layout.astro";
+import { config } from "@/consts";
+
+const { slug } = Astro.params;
+
+const res = await fetch(`${config.WP_BLOG_POST}?slug=${slug}&_embed`);
+const [post] = await res.json();
+
+---
+
+<Layout
+  title={post.title.rendered}
+  description={post.content.rendered.replace(/<[^>]+>/g, "").substring(0, 150) + "..."}
+  image={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`}
+  type="article"
+
+>
+  <article>
+
+    <h1 set:html={post.title.rendered} />
+    {
+   
+        <div class="">
+          <img src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`} 
+          alt={post.title.rendered} 
+          title={post.title.rendered} 
+          style={`view-transition-name: vt-post-featured-image-${post.slug};`} 
+          loading="eager" 
+          class="w-full max-h-[550px] shadow-xl rounded-md object-cover"/>
+        </div>
+
+    }
+    <hr />
+      <div class="content-populated" set:html={post.content.rendered}></div>
+  </article>
+</Layout>

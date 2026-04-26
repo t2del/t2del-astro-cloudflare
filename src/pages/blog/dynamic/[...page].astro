@@ -1,0 +1,110 @@
+---
+export const prerender = false;
+// Set the header for the CDN/Edge
+Astro.response.headers.set(
+  'Cache-Control', 
+  'public, s-maxage=3600, stale-while-revalidate=604800, stale-if-error=604800'
+);
+
+import Layout from "@/layouts/Layout.astro";
+import { config, locale } from "@/consts";
+
+
+import Pagination from "@components/navigation/Pagination.astro";
+
+// import Card from '@components/common/Card.astro';
+const { page = 1, per_page = config.NUM_POSTS_ON_HOMEPAGE } = Astro.params;
+let { url_prev, url_next } = Astro.params;
+let res = await fetch(`${config.WP_BLOG_LIST}&per_page=${per_page}&page=${page}`);
+let posts = await res.json();
+posts = Array.isArray(posts) ? posts : [];
+
+
+// console.log(posts.data)
+// Pagination
+const response_count = await fetch(`${config.WP_BLOG_LIST}`);
+const result_count = await response_count.json();
+
+let pagedp = Math.ceil(result_count.length / Number(per_page));
+let pagedn = Math.ceil(result_count.length / Number(per_page));
+let prev = Number(page);
+let next = Number(page);
+let pages = Number(page);
+
+if(pagedp == pages) {
+	prev = pagedp - 1;
+	next = pagedn;
+	url_prev = '/blog/'+prev;
+	url_next = '';
+	if(pagedp == 1 && pages == 1) {
+		url_prev = '';
+		url_next = '';
+	}
+}
+
+if(Number(pages) < Number(pagedp)) {
+	prev = pages - 1;
+	next = pages + 1;
+	
+	url_prev = '/blog/dynamic/'+prev;
+	url_next = '/blog/dynamic/'+next;
+	if(prev == 0) {
+		prev = 1;
+		url_prev = '';
+	}
+}
+	
+// pagination end
+
+
+const title = "Blog";
+const titleLayout = `Blog — Page ${page}`;
+const description = "Blogs fetched from WordPress CMS (on demand).";
+---
+
+<Layout title={titleLayout} description={description}>
+  <section class="animate-fade-down text-center">
+    <header>
+      <h1>{title} </h1>
+      <p class="text-lg font-semibold">{description}</p>
+    </header>
+
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  2xl:grid-cols-4">
+  		{
+			posts.map((post: { slug: any; title: { rendered: unknown; }; _embedded: { [x: string]: { [x: string]: { media_details: { sizes: { full: { source_url: string | null | undefined; }; }; }; }; }; }; excerpt: { rendered: unknown; }; date: any; }) => (				
+				<article class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+					<a href={`/blog/dynamic/${post.slug}/`}>
+					<img 
+						alt={`${post.title.rendered}`} 
+						title={`${post.title.rendered}`}
+						src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url  || '/placeholder.jpg'}`}  
+						class="h-56 w-full object-cover mt-0 mb-0" 
+						loading="eager" 
+						style={`view-transition-name: vt-post-featured-image-${post.slug};`}
+					/>
+					<div class="bg-white p-4 sm:p-6">
+						<time datetime={post.date}>
+						{new Date(post.date).toLocaleDateString(
+							locale.date.locale,
+							locale.date.options,
+						)}
+						</time>
+						<a href={`/blog/dynamic/${post.slug}/`}>
+						<h3 class="mt-0.5 text-lg text-gray-900" set:html={post.title.rendered}></h3>
+						</a>
+						<p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500" set:html={post.excerpt.rendered}></p>
+					</div>
+					</a>
+				</article>
+			))
+		}
+    </div>
+
+    <!-- Pagination -->
+    <Pagination
+      totalPages={pagedn}
+      currentPage={page}
+      baseUrl="/blog/dynamic"
+    />
+  </section>
+</Layout>
