@@ -211,3 +211,7 @@ svg {
 [data-theme="dark"] .dark\:text-white {
   @apply text-white;
 }
+
+@view-transition {
+  navigation: auto;
+}
