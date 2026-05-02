@@ -37,6 +37,7 @@ if (post?.data?.author) {
 }
 
 const { Content } = await render(post);
+
 ---
 
 <Layout
@@ -52,11 +53,12 @@ const { Content } = await render(post);
   <article>
     {
       post.data.image && (
-        <div class="max-h-[500px] overflow-auto animate-fade-up frombottom">
+        <div class="max-h-[500px] overflow-auto">
           <img
             src={`${config.base}${post.data.image.srcscroll}`}
             alt={`${post.data.image.alt} || ${post.data.title}`}
             class="w-full h-auto block"
+            style={`view-transition-name: vt-post-featured-image-${post.id};`}
           />
         </div>
       )

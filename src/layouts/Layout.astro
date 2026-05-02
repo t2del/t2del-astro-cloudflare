@@ -4,7 +4,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import ScrollToTop from "@components/common/ScrollToTop.astro";
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, maxWidth = "140rem"} = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +19,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       <Header />
     </header>
     <main>
-      <div class="mx-auto h-full max-w-[140rem] px-2 ">
+       
+      <div class={`mx-auto h-full max-w-[${maxWidth}] px-2 `}>
         <slot />
       </div>
     </main>

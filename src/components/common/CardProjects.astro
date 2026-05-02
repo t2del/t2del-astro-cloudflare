@@ -1,7 +1,7 @@
 ---
 import { Picture, } from 'astro:assets';
 import { locale } from "@consts";
-const { data, url  } = Astro.props;
+const { data, url, slug  } = Astro.props;
 ---
 <article class="overflow-hidden rounded shadow-md text-slate-500 shadow-slate-200" >
     <a href={url} class="no-underline block">
@@ -14,10 +14,11 @@ const { data, url  } = Astro.props;
                 width={720}
                 height={360}
                 loading={"lazy"}
-                sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                sizes="(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                style={`view-transition-name: vt-post-featured-image-${slug};`}
             />
         )}
-        <h3 class="text-xl font-medium text-slate-600 dark:text-white mt-2 " set:html={data.title}></h3>
+        <h3 class="text-md font-bold text-slate-600 dark:text-white mt-2 " set:html={data.title}></h3>
         <p class="text-sm text-slate-400 dark:text-gray-500 mt-2 mb-2">
         <time datetime={data.publishDate.toISOString()}>
             {data.publishDate.toLocaleDateString(
