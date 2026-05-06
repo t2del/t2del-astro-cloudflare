@@ -1,4 +1,5 @@
 ---
+import { Picture } from "astro:assets";
 import Logo from "../assets/denmac.png";
 import NavbarMenuItems from "./navigation/NavbarMenuItems.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
@@ -37,7 +38,14 @@ const isHome =
           href={`${config.base}/`}
           class="btn btn-ghost center text-xl lg:flex"
         >
-      <img src={Logo.src} alt="Dennis Macapagal" class="h4 w-20" />
+          <Picture 
+            src={Logo} 
+            alt="Dennis Macapagal" 
+            class="h4 w-20" width={120}
+            height={60}
+            loading={"lazy"} 
+            style={`view-transition-name: vt-post-featured-image-logo;`}
+            />
         </a>
       </div>
       <div class="hidden flex-none lg:block navbar-center">
