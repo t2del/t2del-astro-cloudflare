@@ -1,8 +1,9 @@
 ---
-import Logo from "/public/images/denmac.png";
+import Logo from "../assets/denmac.png";
 import NavbarMenuItems from "./navigation/NavbarMenuItems.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
-import { Image, Picture } from 'astro:assets';
+
+
 import { config } from "../consts";
 const isHome =
   Astro.url.pathname === config.base ||
@@ -36,17 +37,7 @@ const isHome =
           href={`${config.base}/`}
           class="btn btn-ghost center text-xl lg:flex"
         >
-          <Picture
-                formats={['webp']}
-                class="object-fit"
-                src="/public/images/denmac.png"
-                alt="Dennis Macapagal"
-                width={130}
-                height={60}
-                style={`view-transition-name: vt-logo;`}
-                sizes="130px"
-                loading={"lazy"}
-            />
+      <img src={Logo.src} alt="Dennis Macapagal" class="h4 w-20" />
         </a>
       </div>
       <div class="hidden flex-none lg:block navbar-center">
