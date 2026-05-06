@@ -212,6 +212,11 @@ svg {
   @apply text-white;
 }
 
+/* Fix for mobile dark mode text color */
+[data-theme="light"] .dark\:text-white {
+  @apply text-base-content;
+}
+
 @view-transition {
   navigation: auto;
 }

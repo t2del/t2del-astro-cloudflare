@@ -1,0 +1,35 @@
+---
+import { analytics } from "../../consts";
+const gtmId = analytics.google.id;
+const ga4Id = analytics.google.ga4;
+---
+
+<!-- Google Tag Manager -->
+{gtmId && (
+  <script
+    type="text/partytown"
+    is:inline
+    set:html={`
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','${gtmId}');
+  `}
+  />
+)}
+
+{ga4Id && (
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-JZRLM8LG36"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-JZRLM8LG36');
+  </script>
+)}
