@@ -18,7 +18,7 @@ const {  url, image, title, slug, date, excerpt  } = Astro.props;
         />
     </a>
     <div class="p-4 sm:p-6">
-    <span class="text-sm text-gray-400 dark:text-gray-500">
+    <span class="text-sm text-gray-700 dark:text-gray-500">
         <time datetime={date}>
         {new Date(date).toLocaleDateString(
             locale.date.locale,
@@ -28,8 +28,8 @@ const {  url, image, title, slug, date, excerpt  } = Astro.props;
     </span>
     
     <a href={url}>
-        <h3 class="text-gray-900 dark:text-white mt-0.5 text-lg font-semibold" set:html={title}></h3>
+        <h3 class="text-gray-900 dark:text-white mt-0.5 text-xl font-semibold" set:html={title}></h3>
     </a>
-    <p class="text-gray-500 dark:text-white mt-2 line-clamp-3 text-sm/relaxed " set:html={excerpt}></p>
+    <p class="text-gray-500 dark:text-white mt-2 line-clamp-3 text-sm/relaxed lg:hidden 2xl:block" set:html={excerpt}></p>
     </div>
 </article>

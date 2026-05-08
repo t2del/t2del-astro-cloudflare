@@ -47,7 +47,7 @@ const description = "Blogs fetched from WordPress CMS.";
       <h1 class="text-lg font-semibold">{description}</h1>
     </div>
 
-    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  2xl:grid-cols-4">  
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  2xl:grid-cols-4">  
       {page.data.map(post => (
         <CardBlogWP
           url={`/blog/static/${post.slug}/`}
