@@ -1,9 +1,9 @@
 ---
 import { Picture } from "astro:assets";
-import Logo from "../assets/denmac.png";
+import Logo from "@/assets/denmac.png";
 import NavbarMenuItems from "./navigation/NavbarMenuItems.astro";
-import ThemeToggle from "../components/ThemeToggle.astro";
-
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import SearchModal from "@/components/modals/SearchModal.astro";
 
 import { config } from "../consts";
 const isHome =
@@ -54,7 +54,7 @@ const isHome =
         </ul>
       </div>
       <div class="navbar-end xs:flex-1 sm:flex-1 md:flex-1">
-        <!-- <SearchModal /> -->
+        <SearchModal />
         <ThemeToggle class="btn bth-ghost" />
       </div>
     </div>

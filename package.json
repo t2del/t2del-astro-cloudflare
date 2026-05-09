@@ -21,7 +21,8 @@
 		"astro": "5.16.9",
 		"daisyui": "^5.5.19",
 		"tailwindcss": "^4.2.4",
-		"typescript": "5.9.3"
+		"typescript": "5.9.3",
+		"pagefind": "^1.4.0"
 	},
 	"devDependencies": {
 		"wrangler": "4.56.0"
