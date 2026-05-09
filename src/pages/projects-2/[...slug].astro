@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import Card from '@components/common/CardProjects.astro';
+import Card from '@components/common/CardProjects2.astro';
 import { config } from "@consts";
 
 export async function getStaticPaths() {
@@ -104,17 +104,19 @@ const posts2 = (
       <Content />
     </div>
   </article>
-  <section class=" text-center p-5">
-     <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  2xl:grid-cols-4" style="view-transition-name: vt-post-featured-image-projects;">
-      {
-        posts2.map((post2, idx) => (
-          <Card
-            data={post2.data}
-            url={`/projects-2/${post2.id}/`}
-            slug={post2.id}
-          />
-        ))
-      }
+  <section class="not-prose overflow-auto text-center">
+     <div class="mx-auto max-w-[95vw] min-w-0 ">
+      <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute" >
+        {
+          posts2.map((post2, idx) => (
+            <Card
+              data={post2.data}
+              url={`/projects-2/${post2.id}/`}
+              slug={post2.id}
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 </Layout>
