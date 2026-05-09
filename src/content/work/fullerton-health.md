@@ -9,8 +9,6 @@ logo: "/images/work/fullerton-health.png"
 ---
 
 <p>Experienced Web Developer specializing in creating responsive, cross-browser compatible websites. Proficient in back-end development using PHP, HTML, CSS, JavaScript, JQuery, and Ajax. Focused on website security, optimization, and performance. Experienced in WordPress development, security compliance, and Azure Web Apps deployment.</p>
-<br>
-
 <ul>
     <li>Responsible for creating web-responsive and cross-browser compatible websites resulting in better site navigation and user-friendly experience.</li>
     <li>Deep expertise and hands-on experience with back-end web development using programming languages such as PHP,  HTML, CSS, JavaScript, Jquery and Ajax.</li>

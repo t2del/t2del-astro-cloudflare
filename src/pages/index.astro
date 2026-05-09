@@ -16,7 +16,7 @@ const description = "Minimal and lightweight blog and portfolio.";
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true}>
   <section class="animate-fade-down text-center py-6">
-      <h1 class="notshow frombottom font-semibold text-2xl" style="view-transition-name: vt-post-featured-title">
+      <h1 class="notshow frombottom font-semibold text-3xl" style="view-transition-name: vt-post-featured-title">
         Dennis Macapagal<span class="text-xl">👋🏻</span>
       </h1>
       <article class="space-y-4">
@@ -58,7 +58,7 @@ const description = "Minimal and lightweight blog and portfolio.";
                   <div class="xs:flex-1 sm:flex-1 md:flex-1 flex lg:justify-start">
                     <h3 class="text-xl font-medium ">{entry.data.company}</h3>
                   </div>
-                  {entry.data.logo && ( console.log(entry),
+                  {entry.data.logo && ( 
 
                     <Picture 
                       src={entry.data.logo}
@@ -94,7 +94,7 @@ const description = "Minimal and lightweight blog and portfolio.";
                 </div>
                 
 
-                <div set:html={entry.body} class="pl-5"></div>
+                <div set:html={entry.body} class="prose max-w-[100%!important]"></div>
                 
               </article>
             ))
