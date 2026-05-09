@@ -87,7 +87,7 @@ const basePath = config.base || "";
           showImages: false,
           bundlePath: `${pagefindPath}/`,
         });
-        debugEl && (debugEl.textContent = "Search initialized");
+        debugEl && (debugEl.textContent = "");
       };
       script.onerror = () =>
         debugEl && (debugEl.textContent = "Failed to load pagefind-ui.js");
