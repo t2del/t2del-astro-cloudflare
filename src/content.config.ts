@@ -28,6 +28,7 @@ const workCollection = defineCollection({
 	// Type-check frontmatter using a schema
   	schema: z.object({
 		company: z.string(),
+		logo: z.string().optional(),
 		role: z.string(),
 		publishDate: z.date().default(new Date()),
 		dateStart: z.coerce.date(),
@@ -84,7 +85,7 @@ const projectsCollection = defineCollection({
  * Referenced by blog posts for author information.
  */
 const authorsCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.json", base: "./src/data/authors" }),
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/authors" }),
   schema: z.object({
     /** Author display name */
     name: z.string(),

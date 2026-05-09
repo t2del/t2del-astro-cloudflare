@@ -5,6 +5,7 @@ dateStart: "11/01/2017"
 dateEnd: "11/30/2020"
 draft: false
 publishDate: 2017-11-01 14:00:00
+logo: "/images/work/gobro.svg"
 ---
 
 Experienced Web Developer specializing in creating responsive and cross-browser compatible websites. Proficient in back-end development using PHP, HTML, CSS, JavaScript, JQuery, and Ajax. Focused on website security, optimization, and maintenance. Experienced in SDLC, project management, and technical specification refinement. Skilful in WordPress and WooCommerce development, including e-commerce integrations. Strong communication skills and ability to manage client relationships and server administration.
