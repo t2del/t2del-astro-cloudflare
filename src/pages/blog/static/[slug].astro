@@ -60,7 +60,6 @@ const title = post.title.rendered;
           <img src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`} 
           alt={post.title.rendered} 
           title={post.title.rendered} 
-          style={`view-transition-name: vt-post-featured-image-${post.slug};`} 
           loading="eager" />
         </div>
 

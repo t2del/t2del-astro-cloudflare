@@ -220,6 +220,3 @@ svg {
   @apply text-base-content;
 }
 
-@view-transition {
-  navigation: auto;
-}
