@@ -17,7 +17,7 @@ category:
 tag:
   - Front-end
   - Back-end
-author: m-nyorba
+author: denmac
 siteUrl:  'https://www.novelcomm.com.sg/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'

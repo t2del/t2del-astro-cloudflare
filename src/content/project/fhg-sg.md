@@ -17,7 +17,7 @@ tag:
   - Front-end
   - Back-end
   - Azure
-author: m-nyorba
+author: denmac
 siteUrl:  'https://www.fullertonhealth.com/sg/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'

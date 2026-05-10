@@ -16,7 +16,7 @@ category:
 tag:
   - Front-end
   - Back-end
-author: m-nyorba
+author: denmac
 siteUrl:  'https://springbrainykidz.com/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Woocommerce'

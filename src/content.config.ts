@@ -72,7 +72,7 @@ const projectsCollection = defineCollection({
 		/** Post tags for filtering */
 		tag: z.array(z.string()).optional(),
 		/** Reference to author from authors collection */
-		author: reference("authors"),
+		author: reference("authorsCollection"),
 		role: z.string().optional(),
 			platform: z.string().optional(),
 		siteUrl: z.string().optional(),
