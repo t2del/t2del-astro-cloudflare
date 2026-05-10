@@ -6,7 +6,7 @@ Astro.response.headers.set(
   'public, s-maxage=3600, stale-while-revalidate=604800, stale-if-error=604800'
 );
 
-import Layout from "@/layouts/LayoutDynamic.astro";
+import Layout from "@/layouts/Layout.astro";
 import { config, locale } from "@/consts";
 import CardBlogWP from "@/components/common/CardBlogWP.astro";
 
@@ -62,7 +62,7 @@ const titleLayout = `Blog — Page ${page}`;
 const description = "Blogs fetched from WordPress CMS (on demand).";
 ---
 
-<Layout title={titleLayout} description={description}>
+<Layout title={titleLayout} description={description} isDynamic={true}>
   <section class="animate-fade-down text-center">
     <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
       <h1 class="text-lg font-semibold">{description}</h1>

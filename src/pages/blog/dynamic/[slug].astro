@@ -5,7 +5,7 @@ Astro.response.headers.set(
   'Cache-Control', 
   'public, s-maxage=3600, stale-while-revalidate=604800, stale-if-error=604800'
 );
-import Layout from "@/layouts/LayoutDynamic.astro";
+import Layout from "@/layouts/Layout.astro";
 import { config } from "@/consts";
 
 const { slug } = Astro.params;
@@ -20,7 +20,7 @@ const [post] = await res.json();
   description={post.content.rendered.replace(/<[^>]+>/g, "").substring(0, 150) + "..."}
   image={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`}
   type="article"
-
+  isDynamic={true}
 >
   <article>
 
