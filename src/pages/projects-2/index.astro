@@ -1,8 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { config } from "@consts";
-import Pagination from "@components/navigation/Pagination.astro";
+import { fade } from "astro:transitions";
 import Card from '@components/common/CardProjects.astro';
 const posts = (
   await getCollection("projectsCollection", ({ data }) => data.draft !== true)
@@ -19,8 +18,8 @@ const description = "A collection of Projects i have worked on.";
 ---
 <Layout title={title} description={description}  ga4={true} clarity={true}>
   <section class=" text-center p-5">
-    <div class="animate-fade-down flex flex-wrap gap-y-2 items-center justify-center p-5">
-      <h1 class="text-lg font-semibold">{description}</h1>
+    <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
+      <h1 class="text-lg font-semibold" transition:animate={fade({ duration: "0.4s" })}>{description}</h1>
     </div>
 
     <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  2xl:grid-cols-4">

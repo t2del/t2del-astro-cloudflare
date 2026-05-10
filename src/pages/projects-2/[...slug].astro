@@ -3,7 +3,7 @@ import { getCollection, getEntry, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Card from '@components/common/CardProjects2.astro';
 import { config } from "@consts";
-
+import { fade } from "astro:transitions";
 export async function getStaticPaths() {
   const posts = await getCollection("projectsCollection", ({ data }) => {
     return data.draft !== true;
@@ -70,7 +70,7 @@ const posts2 = (
     }
     <div class="description">
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 pb-4">
-        <h1 class="animate-fade-down frombottom text-xl font-medium ">{post.data.title}</h1>
+        <h1 class="text-xl font-medium " transition:animate={fade({ duration: "0.4s" })}>{post.data.title}</h1>
         <div class="text-right ">
           <span><a href={post.data.siteUrl}>Visit </a></span>
         </div>
@@ -105,7 +105,7 @@ const posts2 = (
   </article>
   <section class="not-prose overflow-auto text-center" >
      <div class="mx-auto max-w-[95vw] min-w-0 ">
-      <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute" >
+      <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute" transition:persist>
         {
           posts2.map((post2, idx) => (
             <Card
