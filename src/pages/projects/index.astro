@@ -1,17 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { config } from "@consts";
-import Pagination from "@components/navigation/Pagination.astro";
-import Card from '@components/common/CardProjects.astro';
+import { fade } from "astro:transitions";
+import Card from '@components/common/CardProjects2.astro';
 const posts = (
   await getCollection("projectsCollection", ({ data }) => data.draft !== true)
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-const postsPerPage = config.projectsPerPage;
-const totalPages = Math.ceil(posts.length / postsPerPage);
-const currentPage = 1;
-const paginatedPosts = posts.slice(0, postsPerPage);
+// const postsPerPage = 1;
+// const totalPages = Math.ceil(posts.length / postsPerPage);
+// const currentPage = 1;
+// const paginatedPosts = posts.slice(0, postsPerPage);
 
 const title = "Project";
 const description = "A collection of Projects i have worked on.";
@@ -19,13 +18,15 @@ const description = "A collection of Projects i have worked on.";
 ---
 <Layout title={title} description={description}  ga4={true} clarity={true}>
   <section class=" text-center p-5">
-    <div class=" flex flex-wrap gap-y-2 items-center justify-center p-5">
-      <h1 class="text-lg font-semibold">{description}</h1>
+    <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
+      <h1 class="text-lg font-semibold" transition:animate={fade({ duration: "0.4s" })}>{description}</h1>
     </div>
-
-    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  2xl:grid-cols-4">
+  </section>
+  <section class="not-prose overflow-auto text-center" >
+     <div class="mx-auto max-w-[95vw] min-w-0 ">
+      <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute">
       {
-        paginatedPosts.map((post, idx) => (
+        posts.map((post, idx) => (
           <Card
             data={post.data}
             url={`/projects/${post.id}/`}
@@ -34,12 +35,6 @@ const description = "A collection of Projects i have worked on.";
         ))
       }
     </div>
-
-    <!-- Pagination -->
-    <Pagination
-      totalPages={totalPages}
-      currentPage={currentPage}
-      baseUrl="/projects"
-    />
+    </div>
   </section>
 </Layout>
