@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { locale } from "@/consts";
+import { locale, skills, introduction } from "@/consts";
 import ContactFormNetlify  from "@/components/contact/ContactFormNetlify.astro";
 import { Picture } from "astro:assets";
 import { fade } from "astro:transitions";
@@ -20,29 +20,16 @@ const description = "Minimal and lightweight blog and portfolio.";
         Dennis Macapagal<span class="text-xl">👋🏻</span>
       </h1>
       <article class="space-y-4">
-          <p class="">
-            A Full-Stack Developer with more than 10 years of relevant
-            experience in web programming. Bringing up-to-date industry skills
-            in front-end and back-end technology such as PHP, HTML, CSS,
-            JavaScript, MySQL and hands-on experience with CMS such as
-            WordPress. Detail-oriented and motivated to drive project completion
-            on target with exceptional quality and guaranteed client
-            satisfaction.
-          </p>
+          <p class="" set:html={introduction.shortDesc}></p>
+
           <ul class="flex flex-wrap gap-2 justify-center md:justify-start" id="">
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">PHP</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">HTML</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">CSS</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">JavaScript (jQuery, Ajax, Json)</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">Bootstrap</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">Sass / Less</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">WordPress/ Woocommerce</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">MySQL</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">OpenCart</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">Laravel</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">RestAPI</li>
-            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">GIT</li>
+            {skills.map((skill) => (
+              <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 inline-flex items-center gap-x-1.5 rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">
+                {skill.name}
+              </li>
+            ))}
           </ul>
+          
         </article>
   </section>
 

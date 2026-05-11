@@ -81,3 +81,31 @@ export const locale = {
     } as Intl.DateTimeFormatOptions,
   },
 };
+
+/**
+ * Skill categories and proficiency levels for display on the site
+ */
+export const skills = [
+  { name: "PHP", level: 3 },
+  { name: "Laravel", level: 3 },
+  { name: "HTML", level: 5 },
+  { name: "CSS", level: 5 },
+  { name: "Sass / Less", level: 3 },
+  { name: "Bootstrap", level: 4 },
+  { name: "TailwindCSS", level: 4 },
+  { name: "JavaScript", level: 4 },
+  { name: "TypeScript", level: 3 },
+  { name: "React", level: 4 },
+  { name: "Astrojs", level: 3 },
+  { name: "Node.js", level: 4 },
+  { name: "WordPress", level: 2 },
+  { name: "MySQL", level: 3 },
+  { name: "Azure", level: 1 },
+];
+
+/**
+ * Introduction
+ */
+export const introduction = {
+  shortDesc: "A Full-Stack Developer with more than 10 years of relevant experience in web programming. Bringing up-to-date industry skills in front-end and back-end technology such as PHP, HTML, CSS, JavaScript, MySQL and hands-on experience with CMS such as WordPress. Detail-oriented and motivated to drive project completion on target with exceptional quality and guaranteed client satisfaction.",
+};
