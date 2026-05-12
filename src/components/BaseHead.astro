@@ -19,7 +19,7 @@ const { title, description, image = '/blog-placeholder-1.jpg', ga4 = true, clari
 ---
 
 <!-- Content Security Policy: Restricts where resources can be loaded from -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://clarity.microsoft.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://clarity.microsoft.com; connect-src 'self' https://www.google-analytics.com https://clarity.microsoft.com; font-src 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; script-src-elem 'self' https://www.googletagmanager.com https://www.google-analytics.com https://clarity.microsoft.com 'unsafe-inline';">
 
 <!-- Referrer Policy: Controls how much path information is sent to other sites -->
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
