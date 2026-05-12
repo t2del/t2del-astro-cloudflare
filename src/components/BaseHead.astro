@@ -18,6 +18,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = '/blog-placeholder-1.jpg', ga4 = true, clarity = true } = Astro.props;
 ---
 
+<!-- Content Security Policy: Restricts where resources can be loaded from -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://t2del.com;">
+
+<!-- Referrer Policy: Controls how much path information is sent to other sites -->
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<!-- X-Content-Type-Options: Prevents MIME-type sniffing -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
