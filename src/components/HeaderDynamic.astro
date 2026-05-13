@@ -54,9 +54,16 @@ const isHome =
   </div>
   <div class="drawer-side">
     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 min-h-full w-80 p-4">
+    <div class="menu bg-base-200 min-h-full w-80 p-4">
       <!-- Sidebar content here -->
+       <a
+          href={`${config.base}/`}
+          class="btn btn-ghost center text-xl lg:flex"
+        >
+          <img src={Logo.src} alt="Dennis Macapagal" loading="lazy" decoding="async" fetchpriority="auto" width="120" height="60" class="h4 w-20"/>
+        </a>
+      <hr class="mt-[10px] mb-[10px] text-gray-500 dark:text-white">  
       <NavbarMenuItems />
-    </ul>
+    </div>
   </div>
 </div>

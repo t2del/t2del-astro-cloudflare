@@ -30,31 +30,32 @@ type MenuItem = {
 
 const { menu = mainMenu, maxLevel = 4 } = Astro.props;
 ---
-
-{
-  // Recursive function to render menu
-  function renderMenu(items: MenuItem[] = menu, level = 1) {
-    return items.map((item) => {
-      if (item.children && item.children.length > 0 && level < maxLevel) {
-        return (
-          <li>
-            <details>
-              <summary>{item.label}</summary>
-              <ul class="bg-base-100 rounded-t-none p-2">
-                {renderMenu(item.children, level + 1)}
-              </ul>
-            </details>
-          </li>
-        );
-      } else {
-        return (
-          <li class="w-max">
-            <a href={`${config.base}${item.href}`} aria-label={item.label}>
-              {item.label}
-            </a>
-          </li>
-        );
-      }
-    });
+<ul>
+  {
+    // Recursive function to render menu
+    function renderMenu(items: MenuItem[] = menu, level = 1) {
+      return items.map((item) => {
+        if (item.children && item.children.length > 0 && level < maxLevel) {
+          return (
+            <li class="text-lg font-medium hover:text-primary">
+              <details>
+                <summary>{item.label}</summary>
+                <ul class=" rounded-t-none">
+                  {renderMenu(item.children, level + 1)}
+                </ul>
+              </details>
+            </li>
+          );
+        } else {
+          return (
+            <li class="text-lg font-medium hover:text-primary">
+              <a href={`${config.base}${item.href}`} aria-label={item.label}>
+                {item.label}
+              </a>
+            </li>
+          );
+        }
+      });
+    }
   }
-}
+</ul>
