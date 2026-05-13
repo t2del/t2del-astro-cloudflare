@@ -222,9 +222,15 @@ svg {
 
 .menu {
     :where(li ul) {
-        position: relative;
         margin-inline-start: 0 !important;
         padding-inline-start: 0 !important;
-        white-space: nowrap;
     }
 }
+.menu-horizontal {
+    & > li:not(.menu-title) > details {
+        & > ul {
+          padding-inline-end: 0 !important;
+          padding-block: 0 !important;
+        }
+      }
+    }
