@@ -9,9 +9,9 @@ export const SITE_DESCRIPTION = "Welcome to my website!";
  */
 export const metadata = {
   /** Main site title */
-  title: "Astro starter theme with Tailwind CSS",
+  title: "Dennis Macapagal - Full-Stack Developer",
   /** Site description for meta tags and search engines */
-  description: "Astro starter with Tailwind CSS — fast, accessible, and ready to customize.",
+  description: "Here is my personal website where I share my projects, blog posts, and contact information. I'm a full-stack developer with experience in PHP, JavaScript, and more.",
   /** SEO keywords */
   keywords: "Astro, starter, theme, basics, tutorial, example",
   /** Search engine crawling instructions */

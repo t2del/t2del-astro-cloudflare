@@ -35,8 +35,8 @@ export async function getStaticPaths({ paginate }: { paginate: (items: any[], op
 const { page } = Astro.props as { page: { data: any[], currentPage: number, lastPage: number, url: { prev?: string, next?: string } } };
 
 
-const title = "Blog";
-const titleLayout = `Blog — Page ${page.currentPage}`;
+const title = "Blog | Dennis Macapagal";
+const titleLayout = `Dennis Macapagal | Blog — Page ${page.currentPage}`;
 const description = "Blogs fetched from WordPress CMS.";
 
 ---
