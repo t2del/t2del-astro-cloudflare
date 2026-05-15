@@ -20,7 +20,7 @@ const [post] = await res.json();
   description={post.content.rendered.replace(/<[^>]+>/g, "").substring(0, 150) + "..."}
   image={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`}
   type="article"
-  isDynamic={true}
+  isDynamic={true} maxWidth={true}
 >
   <article>
 
@@ -32,7 +32,7 @@ const [post] = await res.json();
           alt={post.title.rendered} 
           title={post.title.rendered} 
           loading="eager" 
-          class="w-full max-h-[550px] shadow-xl rounded-md object-cover"/>
+          class="w-full max-h-137.5 shadow-xl rounded-md object-cover"/>
         </div>
 
     }

@@ -62,7 +62,7 @@ const titleLayout = `Blog — Page ${page}`;
 const description = "Blogs fetched from WordPress CMS (on demand).";
 ---
 
-<Layout title={titleLayout} description={description} isDynamic={true}>
+<Layout title={titleLayout} description={description} isDynamic={true} maxWidth={true}>
   <section class=" text-center">
     <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
       <h1 class="text-lg font-semibold">{description}</h1>

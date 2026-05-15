@@ -6,7 +6,7 @@ import Footer from "@components/Footer.astro";
 import ScrollToTop from "@components/common/ScrollToTop.astro";
 import { ClientRouter } from "astro:transitions";
 
-const { title, description, pubDate, updatedDate, heroImage, maxWidth = "1620px", pagefind = true, isDynamic = false } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, maxWidth = false, pagefind = true, isDynamic = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,12 +22,12 @@ const { title, description, pubDate, updatedDate, heroImage, maxWidth = "1620px"
       {isDynamic ? <HeaderDynamic /> : <Header />}
     </header>
     
-    <main {...pagefind ? { "data-pagefind-body": "" } : {}} class={`mx-auto h-full max-w-[${maxWidth}] px-2 `}>
+    <main {...pagefind ? { "data-pagefind-body": "" } : {}} class={`mx-auto h-full ${maxWidth ? 'max-w-405' : ''} px-2 `}>
       <slot />
     </main>
     
     <footer class="footer bg-base-200">
-      <div class="mx-auto w-full max-w-[1620px] px-2 py-6">
+      <div class="mx-auto w-full max-w-405 px-2 py-6">
         <Footer />
       </div>
     </footer>
