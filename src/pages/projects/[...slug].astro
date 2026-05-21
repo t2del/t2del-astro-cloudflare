@@ -59,11 +59,11 @@ const posts2 = (
   <article class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 p-[10px]">
     {
       post.data.image && (
-        <div class="max-h-[500px] overflow-auto">
+        <div class="max-h-125 overflow-auto z-0">
           <img
             src={`${config.base}${post.data.image.srcscroll}`}
             alt={`${post.data.image.alt} || ${post.data.title}`}
-            class="w-full h-auto block"
+            class="w-full h-auto block z-0"
             loading="lazy"
             transition:animate={fade({ duration: "0.4s" })}
           />
@@ -105,7 +105,7 @@ const posts2 = (
       <Content />
     </div>
   </article>
-  <section class="not-prose overflow-auto text-center" >
+  <section class="not-prose overflow-auto text-center z-50" >
      <div class="mx-auto max-w-[95vw] min-w-0 ">
       <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute" transition:persist>
         {
