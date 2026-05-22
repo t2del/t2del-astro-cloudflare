@@ -40,11 +40,12 @@ const description = "Minimal and lightweight blog and portfolio.";
         </article>
   </section>
 
-  <section class="animate space-y-6 mt-6">
+   <section class="not-prose overflow-auto text-center z-50" >
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold ">Work Experience</h5>
           <!-- <Link href="/work"> See all work </Link> -->
         </div>
+        <div class="mx-auto max-w-[95vw] min-w-0 ">
           {
             work.map((entry) => (
               <article class="flex flex-col space-y-4 ">
@@ -87,38 +88,33 @@ const description = "Minimal and lightweight blog and portfolio.";
                 </div>
                 
 
-                <div set:html={entry.body} class="prose max-w-[100%!important]"></div>
+                <div set:html={entry.body} class="prose max-w-[100%!important] hidden"></div>
 
                 {
                   // projects that belong to this company (matching companySlug to work entry slug)
                   projects.filter((p) => p.data.companySlug === entry.data.companySlug).length > 0 && (
-                    <div class="mx-auto max-w-300 min-w-0 ">
+                    <div class=" min-w-0 ">
                       <Splide
-                        class='not-content'
+                        class='not-content overflow-hidden'
                         options={ {
-                          perPage: 4,
-                            breakpoints: {
-                              640: {
-                                perPage: 3,
-                                rewind: true,
-                                gap: '1rem',
-                              },
-                              480: {
-                                perPage: 2,
-                                rewind: true,
-                                gap: '1rem',
-                              }
+                          perPage: 6,
+                          breakpoints: {
+                            1200: {
+                              perPage: 4,
                             },
+                            940: {
+                              perPage: 3,
+                            },
+                            680: {
+                              perPage: 2,
+                            },
+                          },
                           rewind: true,
                           gap: '1rem',
                         } }
                         aria-labelledby="basic-example-heading"
                         onMoved={ (splide: SplideInterface, index: number, prev: number, dest: number) => {
-                          console.log('splide:', splide);
-                          console.log('index:', index);
-                          console.log('prev:', prev);
-                          console.log('dest:', dest);
-                        }} transition:persist
+                        }} 
                       >
                         {projects
                           .filter((p) => p.data.companySlug === entry.data.companySlug)
@@ -140,6 +136,7 @@ const description = "Minimal and lightweight blog and portfolio.";
               </article>
             ))
           }
+          </div>
   </section>
 
   <section class=" text-center ">
