@@ -1,5 +1,5 @@
 ---
-title: Fullerton Health Singapore
+title: Singapore
 publishDate: 2023-03-08 14:00:00
 updateDate: 2023-03-08 14:00:00
 draft: false
