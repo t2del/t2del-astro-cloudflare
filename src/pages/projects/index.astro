@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { fade } from "astro:transitions";
 import Card from '@components/common/CardProjects2.astro';
-const posts = (
+const projects = (
   await getCollection("projectsCollection", ({ data }) => data.draft !== true)
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
@@ -26,11 +26,11 @@ const description = "A collection of Projects i have worked on.";
      <div class="mx-auto max-w-[95vw] min-w-0 ">
       <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute">
       {
-        posts.map((post, idx) => (
+        projects.map((project, idx) => (
           <Card
-            data={post.data}
-            url={`/projects/${post.id}/`}
-            slug={post.id}
+            data={project.data}
+            url={`/projects/${project.id}/`}
+            slug={project.id}
           />
         ))
       }

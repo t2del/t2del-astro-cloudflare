@@ -21,6 +21,7 @@ author: denmac
 siteUrl:  'https://www.fullertonhealth.com/pg/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'
+companySlug: fullerton-health
 ---
 
 ### Task for Fullerton Health Papua New Guinea

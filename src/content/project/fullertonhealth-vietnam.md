@@ -1,13 +1,13 @@
 ---
-title: Fullerton Health
-publishDate: 2023-03-06 14:00:00
-updateDate: 2023-03-06 14:00:00
+title: Fullerton Health Vietnam
+publishDate: 2023-06-08 14:00:00
+updateDate: 2023-06-08 14:00:00
 draft: false
 description: |
   Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
 image:
-  src: /images/project/fhg-group.jpg
-  srcscroll: /images/project/fhg-group.png
+  src: /images/project/fhg-vn.jpg
+  srcscroll: /images/project/fhg-vn.png
   alt: Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
 category:
   - Elementor
@@ -18,12 +18,13 @@ tag:
   - Back-end
   - Azure
 author: denmac
-siteUrl:  'https://www.fullertonhealth.com/'
+siteUrl:  'https://www.fullertonhealth.com/vn/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'
+companySlug: fullerton-health
 ---
 
-### Task for Fullerton Health
+### Task for Fullerton Health Vietnam
 
 - Maintain and enhance Fullerton Health website through managing security patches, version upgrades, plugin updates, performance optimization, bug fixes, content validation, backup management, and server health monitoring
 - Ensure compliance with PDPA, and other regional healthcare data privacy regulations as well as accessibility standards

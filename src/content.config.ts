@@ -34,6 +34,7 @@ const workCollection = defineCollection({
 		dateStart: z.coerce.date(),
 		dateEnd: z.union([z.coerce.date(), z.string()]),
 		draft: z.boolean().optional(),
+		companySlug: z.string().optional(),
   	}),
 });
 
@@ -76,6 +77,7 @@ const projectsCollection = defineCollection({
 		role: z.string().optional(),
 			platform: z.string().optional(),
 		siteUrl: z.string().optional(),
+		companySlug: z.string().optional(),
 	}),
 });
 /**

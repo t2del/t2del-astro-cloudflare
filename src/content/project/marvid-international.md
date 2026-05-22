@@ -21,6 +21,7 @@ author: denmac
 siteUrl:  'https://www.marvid.com.sg/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'
+companySlug: firstcom
 ---
 
 The founders of Marvid International began business with pelican in 1992, originally as a sub-contractor for the assembly of flashlights.

@@ -21,4 +21,5 @@ author: denmac
 siteUrl:  'https://www.griddlerngrinder.com/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'
+companySlug: firstcom
 ---

@@ -21,6 +21,7 @@ author: denmac
 siteUrl:  'https://www.sispremium.com/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'
+companySlug: firstcom
 ---
 
 SIS was founded 60 years ago by my father, Mr S I Samy. It had humble beginnings at the old “Tekka” wet market in the early 60s. Very soon, it became a household name known for its quality of its fresh meat. In no small part, this was due to the hard work of its founder who spared no effort in ensuring SIS was synonymous with the best and freshest meat products.

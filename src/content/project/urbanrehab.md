@@ -1,14 +1,14 @@
 ---
-title: Fullerton Health Indonesia
+title: UrbanRehab
 publishDate: 2023-06-08 14:00:00
 updateDate: 2023-06-08 14:00:00
 draft: false
 description: |
-  Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
+  Established in 2008, UrbanRehab is a leading specialist rehabilitation group in Singapore with a patient-centric approach.
 image:
-  src: /images/project/fhg-id.jpg
-  srcscroll: /images/project/fhg-id.png
-  alt: Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
+  src: /images/project/ur.jpg
+  srcscroll: /images/project/ur.png
+  alt: Established in 2008, UrbanRehab is a leading specialist rehabilitation group in Singapore with a patient-centric approach.
 category:
   - Elementor
   - Azure
@@ -18,12 +18,13 @@ tag:
   - Back-end
   - Azure
 author: denmac
-siteUrl:  'https://www.fullertonhealth.com/id/'
+siteUrl:  'https://urbanrehab.com.sg/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'
+companySlug: fullerton-health
 ---
 
-### Task for Fullerton Health Indonesia
+### Task for UrbanRehab
 
 - Maintain and enhance Fullerton Health website through managing security patches, version upgrades, plugin updates, performance optimization, bug fixes, content validation, backup management, and server health monitoring
 - Ensure compliance with PDPA, and other regional healthcare data privacy regulations as well as accessibility standards

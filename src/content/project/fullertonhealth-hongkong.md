@@ -1,13 +1,13 @@
 ---
-title: Fullerton Health Singapore
-publishDate: 2023-03-08 14:00:00
-updateDate: 2023-03-08 14:00:00
+title: Fullerton Health Hong Kong
+publishDate: 2023-06-08 14:00:00
+updateDate: 2023-06-08 14:00:00
 draft: false
 description: |
   Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
 image:
-  src: /images/project/fhgsg.jpg
-  srcscroll: /images/project/fhgsg.png
+  src: /images/project/fhg-hk.jpg
+  srcscroll: /images/project/fhg-hk.png
   alt: Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
 category:
   - Elementor
@@ -18,12 +18,13 @@ tag:
   - Back-end
   - Azure
 author: denmac
-siteUrl:  'https://www.fullertonhealth.com/sg/'
+siteUrl:  'https://www.fullertonhealth.com/hk/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'
+companySlug: fullerton-health
 ---
 
-### Task for Fullerton Health Singapore
+### Task for Fullerton Health Hong Kong
 
 - Maintain and enhance Fullerton Health website through managing security patches, version upgrades, plugin updates, performance optimization, bug fixes, content validation, backup management, and server health monitoring
 - Ensure compliance with PDPA, and other regional healthcare data privacy regulations as well as accessibility standards

@@ -20,6 +20,7 @@ author: denmac
 siteUrl:  'https://www.newpenghiang.com/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Woocommerce'
+companySlug: firstcom
 ---
 
 

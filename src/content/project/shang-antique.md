@@ -21,6 +21,7 @@ author: denmac
 siteUrl:  'https://www.shangantique.com.sg/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'
+companySlug: firstcom
 ---
 
 Shang Antique is a well known antique shop in Singapore, specializing in genuine South East Asian antiques and boasting a high-quality reputation since 1984. 

@@ -4,6 +4,10 @@ import Layout from "@layouts/Layout.astro";
 import Card from '@components/common/CardProjects2.astro';
 import { config } from "@consts";
 import { fade } from "astro:transitions";
+
+import { Splide, SplideSlide } from 'astro-splide';
+import type { Splide as SplideInterface } from 'astro-splide/splide'
+
 export async function getStaticPaths() {
   const posts = await getCollection("projectsCollection", ({ data }) => {
     return data.draft !== true;
@@ -56,7 +60,7 @@ const posts2 = (
   ga4={true} clarity={true}
   maxwidth={true}
 >
-  <article class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 p-[10px]">
+  <article class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 p-2.5">
     {
       post.data.image && (
         <div class="max-h-125 overflow-auto z-0">
@@ -101,22 +105,47 @@ const posts2 = (
         <div class="text-right ">
         </div>
       </div>
-      <hr class="mt-[10px] mb-[10px]"/>
+      <hr class="mt-2.5 mb-2.5"/>
       <Content />
     </div>
   </article>
   <section class="not-prose overflow-auto text-center z-50" >
      <div class="mx-auto max-w-[95vw] min-w-0 ">
-      <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute" transition:persist>
-        {
-          posts2.map((post2, idx) => (
-            <Card
-              data={post2.data}
-              url={`/projects/${post2.id}/`}
-              slug={post2.id}
-            />
-          ))
-        }
+      <div class="" >
+        <Splide
+          class='not-content'
+          options={ {
+            perPage: 6,
+            breakpoints: {
+              640: {
+                perPage: 3,
+              },
+            },
+            rewind: true,
+            gap: '1rem',
+          } }
+          aria-labelledby="basic-example-heading"
+          onMoved={ (splide: SplideInterface, index: number, prev: number, dest: number) => {
+            console.log('splide:', splide);
+            console.log('index:', index);
+            console.log('prev:', prev);
+            console.log('dest:', dest);
+          }} transition:persist
+        >
+          {
+            posts2.map((post2, idx) => (
+              
+              <SplideSlide>
+                <Card
+                  data={post2.data}
+                  url={`/projects/${post2.id}/`}
+                  slug={post2.id}
+                />
+              </SplideSlide>
+            ))
+          }
+        </Splide>
+        
       </div>
     </div>
   </section>

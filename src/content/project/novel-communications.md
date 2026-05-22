@@ -21,5 +21,6 @@ author: denmac
 siteUrl:  'https://www.novelcomm.com.sg/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'
+companySlug: firstcom
 ---
 
