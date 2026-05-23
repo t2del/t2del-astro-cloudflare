@@ -41,7 +41,7 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:after-swap", () => {
     const html = document.documentElement;
     const checkbox = /** @type {HTMLInputElement | null} */ (
       document.getElementById("themeToggle") as HTMLInputElement | null
