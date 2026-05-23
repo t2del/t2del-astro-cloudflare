@@ -187,6 +187,7 @@ svg {
 .pagefind-ui__search-input {
   width: 100% !important;
   padding-left: 40px !important;
+  padding-inline: 2.75rem !important;
   @apply !input !pl-10;
   /* @apply !w-full; */
   &::placeholder {
