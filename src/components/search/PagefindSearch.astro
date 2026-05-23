@@ -38,10 +38,11 @@ const basePath = config.base || "";
 </div>
 
 <script>
-  document.addEventListener("astro:after-swap", async () => {
-    const searchEl = document.getElementById("search");
-    const debugEl = document.getElementById("debug-info");
-    if (!searchEl) return;
+  ["astro:after-swap", "DOMContentLoaded"].forEach((event) =>
+    document.addEventListener(event, async () => {
+      const searchEl = document.getElementById("search");
+      const debugEl = document.getElementById("debug-info");
+      if (!searchEl) return;
 
     // read base from data attribute to avoid injection/quota issues
     const basePath = (searchEl.dataset.base || "").replace(/\/$/, "");
@@ -102,5 +103,5 @@ const basePath = config.base || "";
         (fb as HTMLInputElement).disabled = true;
       }
     }
-  });
+  }));
 </script>
