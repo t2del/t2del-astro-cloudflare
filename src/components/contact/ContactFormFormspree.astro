@@ -1,0 +1,108 @@
+---
+const {
+  title = "Contact us",
+  description = "Fill out the form and we'll get back to you as soon as possible",
+} = Astro.props;
+---
+
+<div class="contact-container">
+    <h2 class="mt-2 mb-2 text-3xl font-bold">{title}</h2>
+    <p class="text-base-content/70">{description}</p>
+
+  <form id="contact-form" action="https://formspree.io/f/xnndyvdq"
+    method="POST">
+    <input type="hidden" name="form-name" value="contact" />
+        
+        <div class="flex flex-col gap-2 form-group">
+          <label for="name"></label>
+          <input type="text" id="name" name="name" required class="focus:outline-none  overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Your name"/>
+        </div>
+
+        <div class="flex flex-col gap-2 form-group">
+          <label for="email"></label>
+          <input type="email" id="email" name="email" required class="focus:outline-none overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Email"/>
+        </div>
+
+        <div class="flex flex-col gap-2 form-group">
+          <label for="message"></label>
+          <textarea id="message" name="message" required class="focus:outline-none overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Your message"></textarea>
+        </div>
+
+        <div id="form-status" class="min-h-[1.25rem] text-sm text-red-600" aria-live="polite"></div>
+
+        <button
+        type="submit" id="submit-btn"
+        class="cursor-pointer inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+        Submit
+      </button>
+  </form>
+</div>
+<script>
+  ["astro:after-swap", "DOMContentLoaded"].forEach((event) =>
+    document.addEventListener(event, async () => {
+      const form = document.querySelector('#contact-form');
+      const status = document.querySelector('#form-status');
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!form) return;
+
+        status.textContent = '';
+        status.classList.remove('text-green-600');
+        status.classList.add('text-red-600');
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name || !email || !message) {
+          status.textContent = 'Please fill in all fields.';
+          return;
+        }
+
+        if (!validateEmail(email)) {
+          status.textContent = 'Please enter a valid email address.';
+          return;
+        }
+
+        const formData = new FormData(form);
+        const submitButton = document.querySelector('#submit-btn');
+        if (submitButton) submitButton.disabled = true;
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+              'Accept': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            status.classList.remove('text-red-600');
+            status.classList.add('text-green-600');
+            status.textContent = 'Message sent successfully.';
+            form.reset();
+          } else {
+            let errorMessage = 'Submission failed. Please try again.';
+            try {
+              const data = await response.json();
+              if (data?.error) errorMessage = data.error;
+            } catch (error) {
+              // ignore JSON parse error
+            }
+            status.textContent = errorMessage;
+          }
+        } catch (error) {
+          status.textContent = 'Network error. Please try again.';
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
+    }));
+</script>
+

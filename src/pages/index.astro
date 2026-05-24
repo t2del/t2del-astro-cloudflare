@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { locale, skills, introduction } from "@/consts";
 import ContactFormNetlify  from "@/components/contact/ContactFormNetlify.astro";
+import ContactFormFormspree  from "@/components/contact/ContactFormFormspree.astro";
 import Card from '@components/common/CardProjects2.astro';
 import { Picture } from "astro:assets";
 import { fade } from "astro:transitions";
@@ -141,7 +142,8 @@ const description = "Minimal and lightweight blog and portfolio.";
 
   <section class=" text-center ">
     <article class="space-y-4">
-        <ContactFormNetlify title="Contact" description="Fill out the form and we'll get back to you as soon as possible" />
+        <!-- <ContactFormNetlify title="Contact" description="Fill out the form and we'll get back to you as soon as possible" /> -->
+        <ContactFormFormspree title="Contact" description="Fill out the form and we'll get back to you as soon as possible" />
     </article>
   </section>
 </Layout>
