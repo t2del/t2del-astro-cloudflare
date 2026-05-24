@@ -41,14 +41,25 @@ const {
 
 <!-- Place these scripts at the end of the body tag -->
 <script is:inline>
-  window.formspree =
-    window.formspree ||
-    function () {
-      (formspree.q = formspree.q || []).push(arguments);
-    };
-  formspree("initForm", {
-    formElement: "#my-form",
-    formId: "xnndyvdq",
-  });
+  ["astro:after-swap", "DOMContentLoaded"].forEach((event) =>
+    document.addEventListener(event, async () => {
+      window.formspree =
+        window.formspree ||
+        function () {
+          (formspree.q = formspree.q || []).push(arguments);
+        };
+      formspree("initForm", {
+        formElement: "#my-form",
+        formId: "xnndyvdq",
+      });
+    })
+  );
 </script>
 <script is:inline src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+
+<style is:inline>
+[data-fs-error], [data-fs-success] {
+    display: none;
+}
+</style>
