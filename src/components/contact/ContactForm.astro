@@ -276,7 +276,8 @@ const error = Astro.url.searchParams.get("error");
 
 <script>
   // Demo form handling (only for demonstration, not for validation)
-  document.addEventListener("DOMContentLoaded", () => {
+  ["astro:after-swap", "DOMContentLoaded"].forEach((event) =>
+    document.addEventListener(event, async () => {
     const demoForm = document.getElementById("demo-form") as HTMLFormElement;
     const demoSuccess = document.getElementById("demo-success") as HTMLElement;
 
@@ -305,5 +306,5 @@ const error = Astro.url.searchParams.get("error");
         }, 3000);
       });
     }
-  });
+  }));
 </script>

@@ -1,5 +1,6 @@
 function animateOnScroll() {
-  document.addEventListener("DOMContentLoaded", () => {
+    ["astro:after-swap", "DOMContentLoaded"].forEach((event) =>
+    document.addEventListener(event, async () => {
     const animatedElements = document.querySelectorAll(
       //   ".animate-fade-up, .animate-fade-right, .animate-fade-left, .animate-fade-down",
       ".animate-fade-up, .animate-fade-right, .animate-fade-left, .animate-fade-down",
@@ -23,7 +24,7 @@ function animateOnScroll() {
     animatedElements.forEach((element) => {
       observer.observe(element);
     });
-  });
+    }));
 }
 
 export { animateOnScroll };
