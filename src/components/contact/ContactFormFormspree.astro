@@ -1,41 +1,122 @@
 ---
 const {
-  title = "Contact us",
+  title = "Let's Build Something <span class=\"text-gray-500\">Scalable.</span>",
   description = "Fill out the form and we'll get back to you as soon as possible",
 } = Astro.props;
+
+import { metadata } from "@/consts";
 ---
 
-<div class="contact-container">
-    <h2 class="mt-2 mb-2 text-3xl font-bold">{title}</h2>
-    <p class="text-base-content/70">{description}</p>
+<div class="mx-auto max-w-[90vw] sm:max-w-[95vw] md:max-w-[95vw] lg:max-w-[100vw] min-w-0  py-16">
+    <div class="mb-10">
+        <h2 class="mt-2 mb-2 text-3xl font-bold" set:html={title}></h2>
+        <div class="w-16 h-1 bg-indigo-400 rounded"></div>
+        <p class="text-base-content/70">{description}</p>
+    </div>
 
-  <form id="contact-form" action="https://formspree.io/f/xnndyvdq"
-    method="POST">
-    <input type="hidden" name="form-name" value="contact" />
-        
-        <div class="flex flex-col gap-2 form-group">
-          <label for="name"></label>
-          <input type="text" id="name" name="name" required class="focus:outline-none  overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Your name"/>
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-10 gap-4 items-start">    
+      <div class="lg:col-span-5 flex flex-col gap-8">
+          <div class="flex flex-col gap-6  bg-[#111927] p-8 rounded-2xl">
+              <div class="flex gap-4 items-start">
+                  <div class="p-3 bg-[#111927] border border-slate-800 rounded-xl text-indigo-400">
+                      <i data-lucide="clock" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                      <span class="block text-xs font-bold uppercase tracking-widest text-indigo-400">Response Time</span>
+                      <span class="text-slate-300 text-sm mt-0.5 block">Replies within 24 hours</span>
+                  </div>
+              </div>
 
-        <div class="flex flex-col gap-2 form-group">
-          <label for="email"></label>
-          <input type="email" id="email" name="email" required class="focus:outline-none overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Email"/>
-        </div>
+              <div class="flex gap-4 items-start">
+                  <div class="p-3 bg-[#111927] border border-slate-800 rounded-xl text-indigo-400">
+                      <i data-lucide="globe" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                      <span class="block text-xs font-bold uppercase tracking-widest text-indigo-400">Timezone</span>
+                      <span class="text-slate-300 text-sm mt-0.5 block">Singapore (SGT) — GMT+8</span>
+                  </div>
+              </div>
 
-        <div class="flex flex-col gap-2 form-group">
-          <label for="message"></label>
-          <textarea id="message" name="message" required class="focus:outline-none overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg px-4 py-2 my-2" placeholder="Your message"></textarea>
-        </div>
+              <div class="flex gap-4 items-start">
+                  <div class="p-3 bg-[#111927] border border-slate-800 rounded-xl text-indigo-400">
+                      <i data-lucide="mail" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                      <span class="block text-xs font-bold uppercase tracking-widest text-indigo-400">Direct Email</span>
+                      <a href={`mailto:${metadata.email}`} class="text-slate-300 text-sm mt-0.5 block hover:text-indigo-400 transition-colors">
+                          {metadata.email}
+                      </a>
+                  </div>
+              </div>
+          </div>
 
-        <div id="form-status" class="min-h-[1.25rem] text-sm text-red-600" aria-live="polite"></div>
+            <div class="bg-[#111927] border border-slate-800/80 rounded-2xl p-6 relative overflow-hidden group">
+              <div class="flex justify-between items-start mb-4">
+                  <div>
+                      <h3 class="text-lg font-bold text-white mb-1">Quick Sync</h3>
+                      <p class="text-xs text-slate-400 leading-relaxed max-w-[280px]">
+                          Prefer a face-to-face? Book a direct technical discovery call via Cal.com.
+                      </p>
+                  </div>
+                  <span class="text-[10px] font-bold bg-[#1d2d24] text-[#4ade80] px-2 py-0.5 rounded tracking-wide uppercase">30 Min</span>
+              </div>
 
-        <button
-        type="submit" id="submit-btn"
-        class="cursor-pointer inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
-        Submit
-      </button>
-  </form>
+              <div class="bg-[#0b111e] border border-dashed border-slate-800 rounded-xl h-44 flex flex-col items-center justify-center gap-3 relative group-hover:border-slate-700 transition-colors">
+                  <div class="animate-spin rounded-full h-5 w-5 border-2 border-indigo-500 border-t-transparent opacity-40"></div>
+                  <div class="flex flex-col items-center">
+                      <i data-lucide="calendar" class="w-6 h-6 text-slate-500 mb-1"></i>
+                      <span class="text-xs font-mono text-slate-400 tracking-wider">Cal.com Widget Loading...</span>
+                  </div>
+              </div>
+
+              <button id="openScheduler" class="w-full mt-4 bg-transparent border border-slate-800 hover:border-slate-700 hover:bg-slate-800/40 text-xs font-medium text-slate-300 py-3 rounded-lg tracking-wide transition-all uppercase">
+                  Open Scheduler
+              </button>
+          </div>
+      </div>
+
+      <div class="lg:col-span-5 bg-[#111927] border border-slate-800/80 rounded-2xl p-8 md:p-10">
+          <form id="contact-form" action="https://formspree.io/f/xnndyvdq" method="POST">
+            <input type="hidden" name="form-name" value="contact" />
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                      <label class="block text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Name</label>
+                      <input type="text" id="name" name="name" required placeholder="John Doe" required
+                          class="w-full bg-[#0b111e] border border-slate-800 focus:border-indigo-500 focus:outline-none rounded-lg px-4 py-3 text-sm text-slate-200 placeholder-slate-600 transition-colors"/>    
+                  </div>
+                  <div>
+                      <label class="block text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Email</label>
+                      <input type="email" id="email" name="email" placeholder="john@company.com" required
+                          class="w-full bg-[#0b111e] border border-slate-800 focus:border-indigo-500 focus:outline-none rounded-lg px-4 py-3 text-sm text-slate-200 placeholder-slate-600 transition-colors"/>    
+                  </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mt-4">
+                <div>
+                    <label class="block text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Message</label>
+                    <textarea placeholder="Tell me about your technical requirements..." rows="4" required
+                        class="w-full bg-[#0b111e] border border-slate-800 focus:border-indigo-500 focus:outline-none rounded-lg px-4 py-3 text-sm text-slate-200 placeholder-slate-600 resize-none transition-colors" id="message" name="message"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    
+                    <button
+                    type="submit" id="submit-btn"
+                    class="bg-[#596ce5] hover:bg-[#4859c7] text-white font-semibold text-xs tracking-widest uppercase px-6 py-3.5 rounded transition-all shadow-lg shadow-indigo-600/10 cursor-pointer">
+                      Send Message
+                  </button>
+                    <p class="text-[11px] text-slate-500 mt-4 leading-relaxed">
+                        By sending, you agree to our data processing policy for lead management.
+                    </p>
+                </div>
+
+                <div id="form-status" class="min-h-5 text-sm text-red-600 pt-2" aria-live="polite"></div>
+              </div>
+          </form>
+      </div>
+    </div>
+  
 </div>
 <script>
   ["astro:after-swap", "DOMContentLoaded"].forEach((event) =>

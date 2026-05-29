@@ -22,6 +22,7 @@ export const metadata = {
   image: "/images/site-image.jpg",
   /** Open Graph content type */
   type: "website" as const, // 'website' | 'article'
+  email: "macapagal.dennis@gmail.com",
 
 };
 
