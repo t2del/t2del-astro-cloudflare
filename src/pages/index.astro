@@ -24,7 +24,7 @@ const description = "Minimal and lightweight blog and portfolio.";
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true} maxWidth={true}>
   <section class=" text-center py-6">
-      <h1 class="notshow frombottom font-semibold text-3xl" transition:animate={fade({ duration: "0.4s" })}>
+      <h1 class="font-semibold text-3xl" transition:name="heading-1">
         Dennis Macapagal<span class="text-xl">👋🏻</span>
       </h1>
       <article class="space-y-4">
@@ -141,7 +141,7 @@ const description = "Minimal and lightweight blog and portfolio.";
   </section>
 
   <section class="not-prose z-50" >
-    <article class="space-y-4">
+    <article class="space-y-4" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
         <ContactFormFormspree  />
     </article>
   </section>
