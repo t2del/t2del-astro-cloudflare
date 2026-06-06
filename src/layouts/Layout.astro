@@ -22,7 +22,7 @@ const { title, description, pubDate, updatedDate, heroImage, maxWidth = false, p
       {isDynamic ? <HeaderDynamic /> : <Header />}
     </header>
     
-    <main {...pagefind ? { "data-pagefind-body": "" } : {}} class={`mx-auto h-full ${maxWidth ? 'max-w-405' : ''} px-2 `}>
+    <main {...pagefind ? { "data-pagefind-body": "" } : {}} class={`h-full ${maxWidth ? 'mx-auto max-w-405' : ''}`}>
       <slot />
     </main>
     
