@@ -23,7 +23,8 @@ const description = "Minimal and lightweight blog and portfolio.";
 
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true} maxWidth={false}>
-  <section class=" text-center py-6 max-w-405 mx-auto">
+  <section class=" text-center py-30">
+    <div class="container mx-auto px-6 xs:px-4">
       <h1 class="font-semibold text-3xl" transition:name="heading-1">
         Dennis Macapagal<span class="text-xl">👋🏻</span>
       </h1>
@@ -39,10 +40,11 @@ const description = "Minimal and lightweight blog and portfolio.";
           </ul>
           
         </article>
+    </div>    
   </section>
 
    <section class="not-prose z-50 py-8 bg-grid " >
-    <div class="max-w-405 mx-auto">
+    <div class="container mx-auto">
         <div class="mb-10">
           <h2 class="mt-2 mb-2 text-2xl font-bold">Work <span class=\"text-gray-500\">Experience.</span></h2>
           <div class="w-16 h-1 bg-green-400/50 rounded"></div>
@@ -146,7 +148,7 @@ const description = "Minimal and lightweight blog and portfolio.";
   </section>
 
   <section class="not-prose z-50 bg-grid2" >
-    <div class="max-w-405 mx-auto">
+    <div class="container mx-auto">
       <article class="space-y-4" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
           <ContactFormFormspree  />
       </article>
