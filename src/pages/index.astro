@@ -123,7 +123,7 @@ const description = "Minimal and lightweight blog and portfolio.";
                         {projects
                           .filter((p) => p.data.companySlug === entry.data.companySlug)
                           .map((p) => (
-                            <SplideSlide>
+                            <SplideSlide class="gap-2">
                               <Card
                                 data={p.data}
                                 url={`/projects/${p.id}/`}
