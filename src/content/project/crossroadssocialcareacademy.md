@@ -20,6 +20,7 @@ author: denmac
 siteUrl:  'https://crossroadssocialcareacademy.com/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'
+companySlug: freelance
 ---
 
 Work Completed for The Crossroads Social Care Academy

@@ -62,8 +62,8 @@ button svg {
 }
 
 svg {
-  @apply h-6;
-  @apply w-6;
+  /* @apply h-6;
+  @apply w-6; */
 }
 
 /* CSS transitions to animate elements when they become visible

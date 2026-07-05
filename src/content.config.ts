@@ -29,6 +29,7 @@ const workCollection = defineCollection({
   	schema: z.object({
 		company: z.string(),
 		logo: z.string().optional(),
+		logoIsSVG: z.boolean().optional(),
 		role: z.string(),
 		publishDate: z.date().default(new Date()),
 		dateStart: z.coerce.date(),

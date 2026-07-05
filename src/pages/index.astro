@@ -51,20 +51,23 @@ const description = "Minimal and lightweight blog and portfolio.";
           {
             work.map((entry) => (
               <article class="flex flex-col space-y-4 ">
-                <div class="flex justify-between items-center gap-2">
+                <div class="flex justify-between items-center gap-2 h-10">
                   <div class="xs:flex-1 sm:flex-1 md:flex-1 flex lg:justify-start">
                     <h3 class="text-xl font-medium ">{entry.data.company}</h3>
                   </div>
-                  {entry.data.logo && ( 
-
-                    <Picture 
-                      src={entry.data.logo}
-                      alt={`${entry.data.company} logo`} 
-                      class="w-42 h-10 object-contain rounded-md mr-2" 
-                      width={120}
-                      height={60}
-                      loading={"lazy"} 
-                    />
+                  {entry.data.logo && (
+                    entry.data.logoIsSVG ? (
+                      <div class="w-35 flex justify-end" > <span class="" set:html={entry.data.logo}></span> </div>
+                    ) : (
+                      <Picture
+                        src={entry.data.logo}
+                        alt={`${entry.data.company} logo`}
+                        class="w-42 h-10 object-contain rounded-md mr-2"
+                        width={120}
+                        height={60}
+                        loading={"lazy"}
+                      />
+                    )
                   )}
                 </div>
                 

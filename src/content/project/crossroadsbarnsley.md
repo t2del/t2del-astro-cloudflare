@@ -20,6 +20,7 @@ author: denmac
 siteUrl:  'https://crossroadsbarnsley.com/'
 role: 'Front-End and Back-end Development'
 platform: 'Wordpress / Elementor'
+companySlug: freelance
 ---
 
 Work Completed for Crossroads Caring for Carers
