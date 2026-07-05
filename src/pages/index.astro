@@ -49,9 +49,9 @@ const description = "Minimal and lightweight blog and portfolio.";
           <h2 class="mt-2 mb-2 text-2xl font-bold">Work <span class=\"text-gray-500\">Experience.</span></h2>
           <div class="w-16 h-1 bg-green-400/50 rounded"></div>
         </div>
-        <div class="mx-auto max-w-[90vw] sm:max-w-[95vw] md:max-w-[95vw] lg:max-w-[100vw] min-w-0 ">
+        <div class="mx-auto">
           {
-            work.map((entry) => (
+            work.map((entry, idx) => (
               <article class="flex flex-col space-y-4 ">
                 <div class="flex justify-between items-center gap-2 h-10">
                   <div class="xs:flex-1 sm:flex-1 md:flex-1 flex lg:justify-start">
@@ -139,7 +139,10 @@ const description = "Minimal and lightweight blog and portfolio.";
                     </div>
                   )
                 }
-                <hr class="mt-2.5 mb-2.5 border-b-accent border-gray-300"/>
+                
+                {idx !== work.length - 1 && (
+                  <hr class="mt-2.5 mb-2.5 border-b-accent border-gray-300"/>
+                )}
               </article>
             ))
           }
@@ -149,7 +152,7 @@ const description = "Minimal and lightweight blog and portfolio.";
 
   <section class="not-prose z-50 bg-grid2  px-6 xs:px-4" >
     <div class="container mx-auto">
-      <article class="space-y-4" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
+      <article class="" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
           <ContactFormFormspree  />
       </article>
     </div>
