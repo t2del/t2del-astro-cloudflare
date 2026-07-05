@@ -23,7 +23,7 @@ const description = "Minimal and lightweight blog and portfolio.";
 
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true} maxWidth={false}>
-  <section class=" text-center py-30  px-6 xs:px-4">
+  <section class=" text-center py-30 px-4 md:px-0">
     <div class="container mx-auto">
       <h1 class="font-semibold text-3xl" transition:name="heading-1">
         Dennis Macapagal<span class="text-xl">👋🏻</span>
@@ -43,21 +43,21 @@ const description = "Minimal and lightweight blog and portfolio.";
     </div>    
   </section>
 
-   <section class="not-prose z-50 py-8 bg-grid  px-6 xs:px-4" >
+   <section class="not-prose z-50 py-8 bg-grid px-4 md:px-0" >
     <div class="container mx-auto">
         <div class="mb-10">
           <h2 class="mt-2 mb-2 text-2xl font-bold">Work <span class=\"text-gray-500\">Experience.</span></h2>
           <div class="w-16 h-1 bg-green-400/50 rounded"></div>
         </div>
-        <div class="mx-auto">
+        <div class="mx-auto max-w-[90vw] sm:max-w-[95vw] md:max-w-[95vw] lg:max-w-[100vw] min-w-0 ">
           {
             work.map((entry, idx) => (
               <article class="flex flex-col space-y-4 ">
-                <div class="flex justify-between items-center gap-2 h-10">
+                <div class="flex justify-between items-center gap-2">
                   <div class="xs:flex-1 sm:flex-1 md:flex-1 flex lg:justify-start">
                     <h3 class="text-xl font-medium ">{entry.data.company}</h3>
                   </div>
-                  {entry.data.logo && (
+                   {entry.data.logo && (
                     entry.data.logoIsSVG ? (
                       <div class="w-35 flex justify-end" > <span class="" set:html={entry.data.logo}></span> </div>
                     ) : (
@@ -139,7 +139,6 @@ const description = "Minimal and lightweight blog and portfolio.";
                     </div>
                   )
                 }
-                
                 {idx !== work.length - 1 && (
                   <hr class="mt-2.5 mb-2.5 border-b-accent border-gray-300"/>
                 )}
@@ -150,7 +149,7 @@ const description = "Minimal and lightweight blog and portfolio.";
     </div>
   </section>
 
-  <section class="not-prose z-50 bg-grid2  px-6 xs:px-4" >
+  <section class="not-prose z-50 bg-grid2 px-4 md:px-0" >
     <div class="container mx-auto">
       <article class="" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
           <ContactFormFormspree  />
