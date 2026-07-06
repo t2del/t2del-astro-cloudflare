@@ -1,0 +1,66 @@
+---
+// src/components/RandomNumbers.astro
+
+// 1. Create a function to generate 8 unique numbers between 1 and 49
+const generateNumbers = (): number[] => {
+  const numbers = new Set<number>();
+  
+  while (numbers.size < 7) {
+    const randomNum = Math.floor(Math.random() * 49) + 1;
+    numbers.add(randomNum);
+  }
+  
+  // Sort them in ascending order for cleaner presentation
+  return Array.from(numbers).sort((a, b) => a - b);
+};
+
+const luckyNumbers = generateNumbers();
+---
+
+<div class="number-container">
+  <h3 class="text-xl font-bold">Your Lucky Numbers</h3>
+  <div class="balls mt-10">
+    {luckyNumbers.map((num) => (
+      <span class="ball text-xl font-bold">{num}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .number-container {
+    text-align: center;
+    font-family: system-ui, sans-serif;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 1rem auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    margin-top: 0;
+    color: #334155;
+  }
+
+  .balls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ball {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+</style>
