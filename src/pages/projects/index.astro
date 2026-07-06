@@ -16,7 +16,7 @@ const title = "Project | Dennis Macapagal";
 const description = "A collection of Projects i have worked on.";
 
 ---
-<Layout title={title} description={description}  ga4={true} clarity={true} maxWidth={true}>
+<Layout title={title} description={description} ga4={true} clarity={true} >
   <section class=" text-center p-5">
     <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
       <h1 class="text-lg font-semibold" transition:name="heading-1">{description}</h1>
@@ -24,7 +24,7 @@ const description = "A collection of Projects i have worked on.";
   </section>
   <section class="not-prose overflow-auto text-center" >
      <div class="mx-auto max-w-[95vw] min-w-0 ">
-      <div class="flex gap-4 overflow-x-scroll scrollbar-hide py-4 position-absolute">
+      <div class="grid justify-items-center grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4">
       {
         projects.map((project, idx) => (
           <Card

@@ -1,57 +1,58 @@
-/* Import tailwindcss and its plugins */
+/* 1. Core Tailwind v4 Import */
 @import "tailwindcss";
+
+
+
+/* 2. Tell Tailwind v4 where to scan for your class names (replaces tailwind.config.mjs 'content') */
+@source "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
+@theme {
+  /* Add your custom extra-small breakpoint */
+  --breakpoint-xs: 30rem; /* 480px */
+  
+  --color-brand-light: #6ee7b7;
+  --color-brand: #10b981;
+  --color-brand-dark: #047857;
+}
+/* 3. Theme Configuration (Migrated from your tailwind.config.mjs) */
+@theme {
+  --color-brand-light: #6ee7b7;
+  --color-brand: #10b981;
+  --color-brand-dark: #047857;
+  
+  --font-sans: "Inter", "sans-serif";
+}
+
 /**
- * Typographic plugin for tailwindcss.
- *
- * See https://tailwindcss-typography.vercel.app/
+ * 4. Plugins
  */
 @plugin "@tailwindcss/typography";
-
-/* Import daisyUI and its plugins.
- * daisyUI is a collection of CSS class names a high-level abstraction of Tailwind CSS utility classes.
- *
- * See https://daisyui.com
- */
 @plugin "daisyui";
 
-/* Set up daisyUI light themes 
- *
- * See https://daisyui.com/docs/themes 
- */
+/* Set up daisyUI light themes */
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
   prefersdark: false;
   color-scheme: light;
 
-  /* border radius */
   --radius-selector: 0rem;
   --radius-field: 0rem;
   --radius-box: 0rem;
 }
 
-/* Set up daisyUI dark themes 
- *
- * See https://daisyui.com/docs/themes
- */
+/* Set up daisyUI dark themes */
 @plugin "daisyui/theme" {
   name: "dark";
   default: false;
   prefersdark: true;
   color-scheme: dark;
 
-  /* border radius */
   --radius-selector: 0rem;
   --radius-field: 0rem;
   --radius-box: 0rem;
 }
 
-/* Add your custom CSS styles here.
- *
- * This block is used to define CSS classes or styles that are not yet available in the daisyUI library.
- * You can define your own CSS classes here and then use them in your HTML components.
- */
-
+/* 5. Custom Global Element Styles */
 a svg,
 button svg {
   @apply opacity-100;
@@ -61,19 +62,7 @@ button svg {
   }
 }
 
-svg {
-  /* @apply h-6;
-  @apply w-6; */
-}
-
-/* CSS transitions to animate elements when they become visible
- *
- * The approach is to apply the styles when the "is-visible" class is added to the element.
- * When the element is visible and the class is added, the transition is triggered.
- *
- * See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
- */
-
+/* 6. CSS Transitions & Animations */
 .animate-fade-up {
   @apply opacity-0;
   @apply translate-y-8;
@@ -158,14 +147,7 @@ svg {
   @apply will-change-[opacity,transform];
 }
 
-/**
- * Pagefind styles
- *
- * These styles are used by the pagefind search bar and must be
- * included in the global stylesheet.
- *
- * @see https://github.com/kriskow-web/pagefind
- */
+/* 7. Pagefind Styles */
 :root {
   --pagefind-ui-text: color-mix(
     in oklab,
@@ -189,11 +171,9 @@ svg {
   padding-left: 40px !important;
   padding-inline: 2.75rem !important;
   @apply !input !pl-10;
-  /* @apply !w-full; */
   &::placeholder {
     @apply !text-base-content;
   }
-    
 }
 
 .pagefind-ui__search-clear {
@@ -221,34 +201,39 @@ svg {
   @apply text-base-content;
 }
 
+/* 8. Navigation / Menus */
 .menu {
-    :where(li ul) {
-        margin-inline-start: 0 !important;
-        padding-inline-start: 0 !important;
-    }
-  padding:0%  
+  :where(li ul) {
+    margin-inline-start: 0 !important;
+    padding-inline-start: 0 !important;
+  }
+  padding: 0%;
 }
-.menu-horizontal {
-    & > li:not(.menu-title) > details {
-        & > ul {
-          padding-inline-end: 0 !important;
-          padding-block: 0 !important;
-        }
-      }
-    }
 
+.menu-horizontal {
+  & > li:not(.menu-title) > details {
+    & > ul {
+      padding-inline-end: 0 !important;
+      padding-block: 0 !important;
+    }
+  }
+}
+
+/* 9. Background Grids */
 .bg-grid {
   background-color: var(--root-bg);
   background-image: radial-gradient(circle, color-mix(in oklab, var(--color-base-content) 8%, transparent) 1px, transparent 1.4px);
   background-size: 24px 24px;
   color: var(--color-base-content);
 }    
+
 .bg-grid2 {
   background-color: rgba(192, 192, 192, 0.473);
   background-image: radial-gradient(circle, color-mix(in oklab, var(--color-base-content) 10%, transparent) 1px, transparent 1.5px);
   background-size: 24px 24px;
   color: var(--color-base-content);
 }
+
 [data-theme="dark"] .bg-grid2 {
-  background-color: white 12%;
-}  
+  background-color: rgba(255, 255, 255, 0.12);
+}
