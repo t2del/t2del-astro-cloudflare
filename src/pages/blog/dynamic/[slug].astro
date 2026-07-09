@@ -1,5 +1,6 @@
 ---
 export const prerender = false;
+import OpenRemark from "@/components/OpenRemark.astro";
 // Set the header for the CDN/Edge
 Astro.response.headers.set(
   'Cache-Control', 
@@ -37,5 +38,7 @@ const [post] = await res.json();
 
     }
       <div class="content-populated" set:html={post.content.rendered}></div>
+      <p class="h-10"></p>
+      <OpenRemark />
   </article>
 </Layout>

@@ -2,7 +2,7 @@
 export const prerender = true;
 import Layout from "@/layouts/Layout.astro";
 import { config } from "@/consts";
-
+import OpenRemark from "@/components/OpenRemark.astro";
 
 export async function getStaticPaths() { 
   // Fetch all posts to get their slugs. We only ask for the fields we need 
@@ -69,5 +69,7 @@ const title = post.title.rendered;
     }
 
       <div class="content-populated" set:html={post.content.rendered}></div>
+      <p class="h-10"></p>
+      <OpenRemark />
   </article>
 </Layout>
