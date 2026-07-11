@@ -24,7 +24,7 @@ platform: 'Wordpress / Elementor'
 companySlug: fullerton-health
 ---
 
-### Task for Fullerton Health
+## Task for Fullerton Health
 
 - Maintain and enhance Fullerton Health website through managing security patches, version upgrades, plugin updates, performance optimization, bug fixes, content validation, backup management, and server health monitoring
 - Ensure compliance with PDPA, and other regional healthcare data privacy regulations as well as accessibility standards

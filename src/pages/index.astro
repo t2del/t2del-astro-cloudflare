@@ -99,42 +99,54 @@ const description = "Minimal and lightweight blog and portfolio.";
 
                 {
                   // projects that belong to this company (matching companySlug to work entry slug)
-                  projects.filter((p) => p.data.companySlug === entry.data.companySlug).length > 0 && (
-                    <div class=" min-w-0 ">
-                      <Splide
-                        class='not-content overflow-hidden'
-                        options={ {
-                          perPage: 4,
-                          breakpoints: {
-                            940: {
-                              perPage: 3,
-                            },
-                            680: {
-                              perPage: 2,
-                            },
-                          },
-                          rewind: true,
-                          gap: '1rem',
-                        } }
-                        aria-labelledby="basic-example-heading"
-                        onMoved={ (splide: SplideInterface, index: number, prev: number, dest: number) => {
-                        }} 
-                      >
-                        {projects
-                          .filter((p) => p.data.companySlug === entry.data.companySlug)
-                          .map((p) => (
-                            <SplideSlide class="gap-2">
-                              <Card
-                                data={p.data}
-                                url={`/projects/${p.id}/`}
-                                slug={p.id}
-                              />
-                            </SplideSlide>
-                          ))}
-
-                      </Splide>
-                    </div>
-                  )
+                  (() => {
+                    const companyProjects = projects.filter((p) => p.data.companySlug === entry.data.companySlug);
+                    return companyProjects.length > 0 && (
+                      <div class=" min-w-0 ">
+                        {companyProjects.length >= 5 ? (
+                          <Splide
+                            class='not-content overflow-hidden'
+                            options={ {
+                              perPage: 4,
+                              breakpoints: {
+                                940: {
+                                  perPage: 3,
+                                },
+                                680: {
+                                  perPage: 2,
+                                },
+                              },
+                              rewind: true,
+                              gap: '1rem',
+                            } }
+                            aria-labelledby="basic-example-heading"
+                          >
+                            {companyProjects.map((p) => (
+                              <SplideSlide class="gap-2">
+                                <Card
+                                  data={p.data}
+                                  url={`/projects/${p.id}/`}
+                                  slug={p.id}
+                                />
+                              </SplideSlide>
+                            ))}
+                          </Splide>
+                        ) : (
+                          <div class="flex flex-wrap gap-4">
+                            {companyProjects.map((p) => (
+                              <div class="gap-2">
+                                <Card
+                                  data={p.data}
+                                  url={`/projects/${p.id}/`}
+                                  slug={p.id}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()
                 }
                 {idx !== work.length - 1 && (
                   <hr class="mt-2.5 mb-2.5 border-b-accent border-gray-300"/>

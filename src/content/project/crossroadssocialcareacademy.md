@@ -30,5 +30,5 @@ Work Completed for The Crossroads Social Care Academy
     <li>UI/UX Rework: Executed a comprehensive rework of the User Interface (UI) and User Experience (UX) to modernize the site's design and improve user navigability.</li>
     <li>Security Implementation: Implemented updated security protocols and configurations to enhance overall website protection against vulnerabilities and threats.</li>
     <li>Data Management: Established and maintained a schedule for timely, routine backups to ensure complete data integrity and disaster recovery preparedness.</li>
-    <li>>Platform Maintenance: Conducted typical WordPress website maintenance, including performance optimization, core/plugin/theme updates, and overall health monitoring.</li>
+    <li>Platform Maintenance: Conducted typical WordPress website maintenance, including performance optimization, core/plugin/theme updates, and overall health monitoring.</li>
 </ul>

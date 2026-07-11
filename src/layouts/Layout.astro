@@ -19,7 +19,7 @@ const { title, description, pubDate, updatedDate, heroImage, maxWidth = false, p
     class="text-base-content mx-auto grid h-full min-h-dvh grid-rows-[auto_1fr_auto]"
   >
     <header class="sticky top-0 z-50">
-      {isDynamic ? <HeaderDynamic /> : <Header />}
+      <HeaderDynamic />
     </header>
     
     <main {...pagefind ? { "data-pagefind-body": "" } : {}} class={`h-full ${maxWidth ? 'mx-auto max-w-405' : ''}`}>

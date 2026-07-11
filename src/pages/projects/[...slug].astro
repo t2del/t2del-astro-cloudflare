@@ -29,21 +29,10 @@ if (!post) {
     statusText: "Not found",
   });
 }
-// Check if post.data and post.data.author exist
-let author = { data: { name: "Unknown Author" } };
-// console.log("Post Data:", post.data);
-if (post?.data?.author) {
-  try {
-    // Get full author data by reference
-    const authorEntry = await getEntry(post.data.author);
-    if (authorEntry) author = authorEntry;
-  } catch (error) {
-    console.warn("Author not found:", post.data.author);
-  }
-}
+
 
 const { Content } = await render(post);
-
+console.log(Content)
 
 const posts2 = (
   await getCollection("projectsCollection", ({ data, id }) => data.draft !== true && id !== post.id)
@@ -54,25 +43,24 @@ const posts2 = (
   title={`${post.data.title} | Projects | Dennis Macapagal`}
   description={post.data.description}
   image={post.data.image?.src}
-  type="article"
   publishDate={post.data.publishDate}
   updateDate={post.data.updateDate}
-  author={author.data}
-  ga4={true} clarity={true}
- 
+  ga4={true} 
+  clarity={true}
 >
-  <section class="text-center p-5 bg-grid">
+  <section class=" p-5 bg-grid">
     <div class="container mx-auto">
-      <article class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 p-2.5">
+      <article class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 p-2.5" >
         {
           post.data.image && (
-            <div class="max-h-125 overflow-auto z-0">
+            <div class="sm:max-h-145 max-h-50 overflow-auto z-0">
               <img
                 src={`${config.base}${post.data.image.srcscroll}`}
                 alt={`${post.data.image.alt} || ${post.data.title}`}
                 class="w-full h-auto block z-0"
                 loading="lazy"
                 transition:animate={fade({ duration: "0.4s" })}
+                transition:name={`card-${post.id}`}
               />
             </div>
           )
@@ -85,31 +73,25 @@ const posts2 = (
             </div>
           </div>
         
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 pb-4">
-          <div>
+        <div class="pb-2">
           {
             post.data.category && post.data.category.length > 0 && (
               <span><strong>Stack:</strong> {post.data.category.join(", ")}</span>
             )
           }
-          </div>
-        
-          
         </div>
-          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 pb-4">
-            <div>
+          <div class="pb-2">
             {
                 post.data.tag && post.data.tag.length > 0 && (
                   <span><strong>Tags:</strong> {post.data.tag.join(", ")}</span>
                 )
               }
-            </div>
-          
-            <div class="text-right ">
-            </div>
           </div>
           <hr class="mt-2.5 mb-2.5"/>
-          <Content />
+          <div class="prose">
+            <Content />
+          </div>
+          
         </div>
       </article>
       <section class="not-prose overflow-auto text-center z-50" >
