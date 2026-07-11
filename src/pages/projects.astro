@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { fade } from "astro:transitions";
 import Card from '@components/common/CardProjects2.astro';
-
+import { company } from "@/consts";
 
 // 1. Get all published projects
 const allProjects = (
@@ -14,14 +14,18 @@ const allProjects = (
 const searchParams = Astro.url.searchParams;
 const companySlug = searchParams.get("company") ?? "";
 
-// 3. Filter projects if a company parameter exists
+// 3. Resolve company name from the company slug
+const companyMatch = company.find((item) => item.companySlug === companySlug);
+const companyName = companyMatch?.name ?? companySlug;
+
+// 4. Filter projects if a company parameter exists
 const projects = companySlug 
   ? allProjects.filter((p) => p.data.companySlug === companySlug) 
   : allProjects;
 
 const title = "Project | Dennis Macapagal";
 const description = companySlug 
-  ? `Projects for ${companySlug}` 
+  ? `Projects for ${companyName}` 
   : "A collection of Projects i have worked on.";
 
 console.log("Company Slug:", companySlug);
@@ -32,28 +36,36 @@ console.log("Company Slug:", companySlug);
     <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
       <h1 class="text-lg font-semibold" transition:name="heading-1">{description}</h1>
     </div>
-    {companySlug && (
-      <a href="/projects" class="text-sm text-blue-500 underline">Clear Filter</a>
-    )}
+
+        <ul class="flex flex-wrap gap-2 justify-center" id="">
+            <a href={`/projects/`} class={`flex gap-x-2 text-nowrap notshow fromright -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-sm/5 forced-colors:outline bg-green-300/10 border-2 border-green-700 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15 ${companySlug === "" ? 'font-semibold bg-green-300/80' : 'bg-green-300/10'}`}>
+                All
+              </a>
+            {company.map((company) => (
+              <a href={`/projects?company=${company.companySlug}`} class={`flex gap-x-2 text-nowrap -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-sm/5 forced-colors:outline  border-2 border-green-700 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15 ${company.companySlug === companySlug ? 'font-semibold bg-green-300/80' : 'bg-green-300/10'}`}>
+                {company.name}
+              </a>
+            ))}
+          </ul>
   </section>
   
-  <section class="not-prose overflow-auto text-center" >
-     <div class="mx-auto max-w-[95vw] min-w-0 ">
-      <div class="grid justify-items-center grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4">
-      {
-        projects.length > 0 ? (
-          projects.map((project) => (
-            <Card
-              data={project.data}
-              url={`/projects/${project.id}/`}
-              slug={project.id}
-            />
-          ))
+  <section class="not-prose overflow-auto text-center">
+    <div class="container mx-auto">
+        <div class=" min-w-0">
+        {projects.length > 0 ? (
+            <div class="grid justify-items-center grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4">
+            {projects.map((project) => (
+                <Card
+                data={project.data}
+                url={`/projects/${project.id}/`}
+                slug={project.id}
+                />
+            ))}
+            </div>
         ) : (
-          <p>No projects found for this company.</p>
-        )
-      }
-    </div>
+            <p>No projects found for this company.</p>
+        )}
+        </div>
     </div>
   </section>
 </Layout>

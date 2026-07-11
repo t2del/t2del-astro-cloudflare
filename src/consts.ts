@@ -113,10 +113,6 @@ export const introduction = {
 
 export const company = [
   { 
-    name: "All", 
-    companySlug: '' 
-  },
-  { 
     name: "Freelance", 
     companySlug: 'freelance' 
   },

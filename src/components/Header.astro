@@ -38,13 +38,7 @@ const isHome =
           href={`${config.base}/`}
           class="btn btn-ghost center text-xl lg:flex"
         >
-          <Picture 
-            src={Logo} 
-            alt="Dennis Macapagal" 
-            class="h4 w-20" width={120}
-            height={60}
-            loading={"lazy"} 
-            />
+          <img src={Logo.src} alt="Dennis Macapagal" decoding="async" fetchpriority="high" width="120" height="60" class="h4 w-20"/>
         </a>
       </div>
       <div class="hidden flex-none lg:block navbar-center">

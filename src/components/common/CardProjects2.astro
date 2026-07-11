@@ -3,7 +3,7 @@ import { Picture, } from 'astro:assets';
 import { locale } from "@consts";
 const { data, url, slug  } = Astro.props;
 ---
-<article class=" rounded shadow-md text-slate-500 bg-white shadow-slate-200 max-w-75 overflow-hidden text-center m-2" >
+<article transition:name={`card-${slug}`} class=" rounded shadow-md text-slate-500 bg-white shadow-slate-200 max-w-75 overflow-hidden text-center m-2" >
     <a href={url} class="no-underline block">
         {data.image && (
             <Picture
