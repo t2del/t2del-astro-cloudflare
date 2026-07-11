@@ -37,7 +37,7 @@ console.log("Company Slug:", companySlug);
       <h1 class="text-lg font-semibold" transition:name="heading-1">{description}</h1>
     </div>
 
-        <ul class="flex flex-wrap gap-2 justify-center" id="">
+        <div class="flex flex-wrap gap-2 justify-center" id="">
             <a href={`/projects/`} class={`flex gap-x-2 text-nowrap notshow fromright -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-sm/5 forced-colors:outline bg-green-300/10 border-2 border-green-700 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15 ${companySlug === "" ? 'font-semibold bg-green-300/80' : 'bg-green-300/10'}`}>
                 All
               </a>
@@ -46,7 +46,7 @@ console.log("Company Slug:", companySlug);
                 {company.name}
               </a>
             ))}
-          </ul>
+        </div>
   </section>
   
   <section class="not-prose overflow-auto text-center">
