@@ -22,10 +22,12 @@ const titleLayout = `Dennis Macapagal - Full-Stack Developer`;
 const description = "Minimal and lightweight blog and portfolio.";
 
 ---
-<Layout title={titleLayout} description={description} ga4={true} clarity={true} maxWidth={true}>
-  <section class="not-prose z-50" >
-    <article class="space-y-4" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
-        <ContactFormFormspree  />
-    </article>
+<Layout title={titleLayout} description={description} ga4={true} clarity={true} >
+  <section class="not-prose z-50 p-5 bg-grid" >
+    <div class="container mx-auto">
+      <article class="space-y-4" transition:name="contact" transition:animate={fade({ duration: "0.4s" })}>
+          <ContactFormFormspree  />
+      </article>
+    </div>
   </section>
 </Layout>

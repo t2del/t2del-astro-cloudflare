@@ -32,24 +32,26 @@ console.log("Company Slug:", companySlug);
 ---
 
 <Layout title={title} description={description} ga4={true} clarity={true} >
-  <section class="text-center p-5">
-    <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
-      <h1 class="text-lg font-semibold" transition:name="heading-1">{description}</h1>
-    </div>
+  <section class="text-center p-5 bg-grid">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
+        <h1 class="text-lg font-semibold" transition:name="heading-1">{description}</h1>
+        </div>
 
         <div class="flex flex-wrap gap-2 justify-center" id="">
             <a href={`/projects/`} class={`flex gap-x-2 text-nowrap notshow fromright -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-sm/5 forced-colors:outline bg-green-300/10 border-2 border-green-700 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15 ${companySlug === "" ? 'font-semibold bg-green-300/80' : 'bg-green-300/10'}`}>
                 All
-              </a>
+                </a>
             {company.map((company) => (
-              <a href={`/projects?company=${company.companySlug}`} class={`flex gap-x-2 text-nowrap -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-sm/5 forced-colors:outline  border-2 border-green-700 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15 ${company.companySlug === companySlug ? 'font-semibold bg-green-300/80' : 'bg-green-300/10'}`}>
+                <a href={`/projects?company=${company.companySlug}`} class={`flex gap-x-2 text-nowrap -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-sm/5 forced-colors:outline  border-2 border-green-700 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15 ${company.companySlug === companySlug ? 'font-semibold bg-green-300/80' : 'bg-green-300/10'}`}>
                 {company.name}
-              </a>
+                </a>
             ))}
         </div>
+    </div>
   </section>
   
-  <section class="not-prose overflow-auto text-center">
+  <section class="not-prose overflow-auto text-center bg-grid">
     <div class="container mx-auto">
         <div class=" min-w-0">
         {projects.length > 0 ? (
