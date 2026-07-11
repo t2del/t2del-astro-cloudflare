@@ -23,23 +23,24 @@ const description = "Minimal and lightweight blog and portfolio.";
 
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true} maxWidth={false}>
-  <section class="bg-grid text-center py-30 px-4 md:px-0">
-    <div class="container mx-auto">
-      <h1 class="font-semibold text-3xl" transition:name="heading-1">
+  <section class="bg-grid sm:py-30 py-14  px-4 md:px-0">
+    <div class="container max-w-160 mx-auto">
+      <h1 class="font-semibold md:text-4xl sm:text-3xl text-2xl text-center" transition:name="heading-1">
         Dennis Macapagal<span class="text-xl">👋🏻</span>
+        <div class="w-16 mt-3.75 h-1 bg-green-400/50 rounded mx-auto"></div>
       </h1>
-      <article class="space-y-4">
-          <p class="" set:html={introduction.shortDesc}></p>
-
-          <ul class="flex flex-wrap gap-2 justify-center md:justify-start" id="">
-            {skills.map((skill) => (
-              <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">
-                {skill.name}
-              </li>
-            ))}
-          </ul>
-          
-        </article>
+      <div class="my-6">
+          <p class="leading-6 text-justify" set:html={introduction.shortDesc}></p>
+      </div>
+      <div class="my-6">
+        <ul class="flex flex-wrap gap-2 justify-center " id="">
+          {skills.map((skill) => (
+            <li class="flex gap-x-2 text-nowrap notshow fromright -my-0.5 items-center rounded-md px-2.5 py-1.5 text-sm/5 font-medium sm:text-xs/5 forced-colors:outline bg-green-400/20 text-black-700 group-data-hover:bg-green-400/30 dark:bg-green-400/10 dark:text-green-300 dark:group-data-hover:bg-green-400/15">
+              {skill.name}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>    
   </section>
 
