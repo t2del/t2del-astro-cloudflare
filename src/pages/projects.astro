@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { fade } from "astro:transitions";
+import Card from '@components/common/CardProjects2.astro';
+
+
+// 1. Get all published projects
+const allProjects = (
+  await getCollection("projectsCollection", ({ data }) => data.draft !== true)
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+// 2. Extract the companySlug from the URL query parameters
+const searchParams = Astro.url.searchParams;
+const companySlug = searchParams.get("company") ?? "";
+
+// 3. Filter projects if a company parameter exists
+const projects = companySlug 
+  ? allProjects.filter((p) => p.data.companySlug === companySlug) 
+  : allProjects;
+
+const title = "Project | Dennis Macapagal";
+const description = companySlug 
+  ? `Projects for ${companySlug}` 
+  : "A collection of Projects i have worked on.";
+
+console.log("Company Slug:", companySlug);
+---
+
+<Layout title={title} description={description} ga4={true} clarity={true} >
+  <section class="text-center p-5">
+    <div class="flex flex-wrap gap-y-2 items-center justify-center p-5">
+      <h1 class="text-lg font-semibold" transition:name="heading-1">{description}</h1>
+    </div>
+    {companySlug && (
+      <a href="/projects" class="text-sm text-blue-500 underline">Clear Filter</a>
+    )}
+  </section>
+  
+  <section class="not-prose overflow-auto text-center" >
+     <div class="mx-auto max-w-[95vw] min-w-0 ">
+      <div class="grid justify-items-center grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4">
+      {
+        projects.length > 0 ? (
+          projects.map((project) => (
+            <Card
+              data={project.data}
+              url={`/projects/${project.id}/`}
+              slug={project.id}
+            />
+          ))
+        ) : (
+          <p>No projects found for this company.</p>
+        )
+      }
+    </div>
+    </div>
+  </section>
+</Layout>

@@ -21,4 +21,5 @@ author: denmac
 siteUrl:  'https://domestic1.sg/'
 role: 'Front-End and Back-end Development'
 platform: 'OpenCart'
+companySlug: firstcom
 ---

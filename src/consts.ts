@@ -110,3 +110,26 @@ export const skills = [
 export const introduction = {
   shortDesc: "A Full-Stack Developer with more than 10 years of relevant experience in web programming. Bringing up-to-date industry skills in front-end and back-end technology such as PHP, HTML, CSS, JavaScript, MySQL and hands-on experience with CMS such as WordPress. Detail-oriented and motivated to drive project completion on target with exceptional quality and guaranteed client satisfaction.",
 };
+
+export const company = [
+  { 
+    name: "All", 
+    companySlug: '' 
+  },
+  { 
+    name: "Freelance", 
+    companySlug: 'freelance' 
+  },
+  { 
+    name: "Activa Media", 
+    companySlug: 'activa-media' 
+  },
+  { 
+    name: "Fullerton Health", 
+    companySlug: 'fullerton-health' 
+  },
+  { 
+    name: "Firstcom Solutions", 
+    companySlug: 'firstcom' 
+  },
+];
