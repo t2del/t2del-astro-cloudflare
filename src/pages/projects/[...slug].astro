@@ -32,7 +32,6 @@ if (!post) {
 
 
 const { Content } = await render(post);
-console.log(Content)
 
 const posts2 = (
   await getCollection("projectsCollection", ({ data, id }) => data.draft !== true && id !== post.id)

@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import { config, locale } from "@consts";
@@ -60,7 +61,7 @@ const description = "A collection of Projects i have worked on.";
         paginatedPosts.map((post, idx) => (
           <Card
             data={post.data}
-            url={`/projects/${post.id}/`}
+            url={`/projects-3/${post.id}/`}
             slug={post.id}
           />
         ))
@@ -71,7 +72,7 @@ const description = "A collection of Projects i have worked on.";
     <Pagination
       totalPages={totalPages}
       currentPage={currentPage}
-      baseUrl="/projects"
+      baseUrl="/projects-3"
     />
   </section>
 </Layout>
