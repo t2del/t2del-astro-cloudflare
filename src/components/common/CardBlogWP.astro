@@ -3,7 +3,7 @@ import { Picture, } from 'astro:assets';
 import { locale } from "@consts";
 const {  url, image, title, slug, date, excerpt  } = Astro.props;
 ---
-<article class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+<article class="rounded shadow-md text-slate-500 bg-white shadow-slate-200 overflow-hidden text-center m-2">
     <a href={url}>
         <Picture
             formats={[ 'webp']}
@@ -27,8 +27,8 @@ const {  url, image, title, slug, date, excerpt  } = Astro.props;
     </span>
     
     <a href={url}>
-        <h3 class="text-gray-900 dark:text-white mt-0.5 text-xl font-semibold" set:html={title}></h3>
+        <h3 class="text-gray-900 dark:text-gray-800  mt-0.5 text-xl font-semibold" set:html={title}></h3>
     </a>
-    <p class="text-gray-500 dark:text-white mt-2 line-clamp-3 text-sm/relaxed lg:hidden 2xl:block" set:html={excerpt}></p>
+    <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3 text-sm/relaxed lg:hidden 2xl:block" set:html={excerpt}></p>
     </div>
 </article>
