@@ -23,22 +23,24 @@ const [post] = await res.json();
   type="article"
   isDynamic={true} maxWidth={true}
 >
-  <article>
-
-    <h1 set:html={post.title.rendered} />
-    {
-   
-        <div class="">
-          <img src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`} 
-          alt={post.title.rendered} 
-          title={post.title.rendered} 
-          loading="eager" 
-          class="w-full max-h-137.5 shadow-xl rounded-md object-cover"/>
+   <article transition:name={`blog-card-${slug}`} class="py-10">
+    <div class="container">
+      <div class="h-90 overflow-hidden w-full object-cover rounded-md relative">
+        <img src={`${post._embedded?.['wp:featuredmedia']?.['0']?.media_details?.sizes?.full?.source_url || '/placeholder.jpg'}`} 
+        alt={post.title.rendered} 
+        title={post.title.rendered} 
+        loading="eager" 
+        class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center justify-center px-4 text-center">
+          <h1 class="text-white text-2xl md:text-4xl font-bold" set:html={post.title.rendered} />
         </div>
+      </div>
 
-    }
-      <div class="content-populated" set:html={post.content.rendered}></div>
+      <div class="content-populated leading-6 text-[1.20rem] pt-6" set:html={post.content.rendered}></div>
       <p class="h-10"></p>
       <OpenRemark />
+    </div>
   </article>
 </Layout>
