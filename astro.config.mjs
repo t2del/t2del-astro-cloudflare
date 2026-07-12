@@ -8,8 +8,14 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://t2del.com",
-	// integrations: [mdx(), sitemap()],
-	integrations: [mdx()],
+	integrations: [
+		mdx(), 
+		sitemap({
+			customSitemaps: [
+				'https://t2del.com/sitemap-blog.xml',
+			],
+		}),
+	],
 	adapter: cloudflare({
 		platformProxy: {
 			enabled: true,
