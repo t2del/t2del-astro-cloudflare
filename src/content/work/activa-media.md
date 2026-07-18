@@ -10,4 +10,4 @@ logo: '<svg class="transition-all duration-300 aspect-[113/60] w-[97px] 2xl:w-[1
 companySlug: activamedia
 ---
 
-***
+#### Brief Description for Activa Media

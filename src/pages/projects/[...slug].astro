@@ -99,15 +99,12 @@ const posts2 = (
             <Splide
               class='not-content'
               options={ {
-                perPage: 6,
+                perPage: 4,
                 breakpoints: {
                   1200: {
-                    perPage: 4,
-                  },
-                  940: {
                     perPage: 3,
                   },
-                  680: {
+                  800: {
                     perPage: 2,
                   },
                 },
@@ -116,10 +113,6 @@ const posts2 = (
               } }
               aria-labelledby="basic-example-heading"
               onMoved={ (splide: SplideInterface, index: number, prev: number, dest: number) => {
-                console.log('splide:', splide);
-                console.log('index:', index);
-                console.log('prev:', prev);
-                console.log('dest:', dest);
               }} transition:persist
             >
               {
