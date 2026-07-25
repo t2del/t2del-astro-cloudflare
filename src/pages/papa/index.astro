@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import OpenRemark from "@/components/OpenRemark.astro";
+const titleLayout = `Papa`;
+const description = "Danilo Macapagal has entered into rest on June 16th, 2025.";
+const image = "/papa/papa.jpg";
+---
+
+<Layout title={titleLayout} description={description} image={image} ga4={true} clarity={true} maxWidth={false}>
+	<section aria-label="Papa" class=" max-w-260 mx-auto py-10" >
+		<div class="container ">
+			<h1 class="font-semibold md:text-4xl sm:text-3xl text-2xl text-center">Danilo Lozano Macapagal <br> October 26, 1964 to June 16, 2025 <br> 🕊️🕯️🤍</h1>
+			<div class="py-5">
+				<video  controls style="width: 100%; height: auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" >
+					<source src="/papa/papa.mp4" type="video/mp4">
+				</video>
+			</div>
+			<br>
+			<p class="text-lg text-gray-700 mb-4">Danilo Macapagal has entered into rest on June 16th, 2025. He was a loving father, grandfather, brother, and friend to many. His legacy of kindness, wisdom, and love will forever be cherished.</p>
+			<p class="text-lg text-gray-700 mb-4">Papa, you were a beacon of light in our lives. Your laughter, stories, and unwavering support shaped who we are today. You taught us the importance of family, hard work, and compassion. Your love was a guiding force that will continue to inspire us.</p>
+			<p class="text-lg text-gray-700 mb-4">As we gather to	celebrate your life, we remember the countless moments of joy and love you shared with us. From family gatherings to quiet evenings spent together, every memory is a treasure that we will hold dear.</p>
+			<p class="text-lg text-gray-700 mb-4">Your spirit will live on in our hearts, guiding us through life's challenges and reminding us to cherish each moment. We will carry forward the values you instilled in us, ensuring that your legacy continues to shine.</p>
+			<p class="text-lg text-gray-700 mb-4">Thank you for being	the incredible person you were. Your love and wisdom will forever be a part of us. We will miss you dearly, but we find comfort in knowing that you are now at peace, watching over us with love.</p>
+			<p class="text-lg text-gray-700 mb-4">Rest in peace, Papa. You will always be in our hearts, and your memory will live on through us.</p>
+			<p class="text-lg text-gray-700 mb-4">With all our love,</p>
+			<p class="text-lg text-gray-700 mb-4">Denn, your son</p>
+		</div>
+		<div class="container "><OpenRemark /></div>
+	</section>
+</Layout>
+
