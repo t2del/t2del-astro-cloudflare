@@ -6,7 +6,7 @@ draft: false
 description: |
    Novel Communications
 image:
-  src: /images/project/novelcomm.jpg
+  src: /images/project/novelcomm.webp
   srcscroll: /images/project/novelcomm.jpg
   alt: Novel Communications
 category:

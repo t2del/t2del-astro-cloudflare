@@ -6,7 +6,7 @@ draft: false
 description: |
    Unique Fine Pearls
 image:
-  src: /images/project/ufp.jpg
+  src: /images/project/ufp.webp
   srcscroll: /images/project/ufp.jpg
   alt: Unique Fine Pearls
 category:

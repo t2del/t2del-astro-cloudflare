@@ -6,7 +6,7 @@ draft: false
 description: |
   YOUR TRUSTED MOM LICENSED PART-TIME MAID AGENCY & NEA LICENSED CLEANING COMPANY FOR OVER 10 YEARS
 image:
-  src: /images/project/domestic1.jpg
+  src: /images/project/domestic1.webp
   srcscroll: /images/project/domestic1.jpg
   alt: YOUR TRUSTED MOM LICENSED PART-TIME MAID AGENCY & NEA LICENSED CLEANING COMPANY FOR OVER 10 YEARS
 category:

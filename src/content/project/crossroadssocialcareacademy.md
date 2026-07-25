@@ -6,7 +6,7 @@ draft: false
 description: |
   Provides expert training for the social care sector. All of our classroom courses are delivered by subject experts to ensure their relevance and practical application.
 image:
-  src: /images/project/crossroadssocialcareacademy.jpg
+  src: /images/project/crossroadssocialcareacademy.webp
   srcscroll: /images/project/crossroadssocialcareacademy.png
   alt: Provides expert training for the social care sector. All of our classroom courses are delivered by subject experts to ensure their relevance and practical application.
 category:

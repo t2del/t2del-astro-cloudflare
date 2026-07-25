@@ -6,7 +6,7 @@ draft: false
 description: |
   Established in 2008, UrbanRehab is a leading specialist rehabilitation group in Singapore with a patient-centric approach.
 image:
-  src: /images/project/ur.jpg
+  src: /images/project/ur.webp
   srcscroll: /images/project/ur.png
   alt: Established in 2008, UrbanRehab is a leading specialist rehabilitation group in Singapore with a patient-centric approach.
 category:

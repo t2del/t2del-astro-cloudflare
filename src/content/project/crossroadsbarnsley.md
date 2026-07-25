@@ -6,7 +6,7 @@ draft: false
 description: |
   Welcome to Crossroads Caring for Carers Celebrating 25 years of Caring for Carers
 image:
-  src: /images/project/crossroadsbarnsley.jpg
+  src: /images/project/crossroadsbarnsley.webp
   srcscroll: /images/project/crossroadsbarnsley.png
   alt: Welcome to Crossroads Caring for Carers Celebrating 25 years of Caring for Carers
 category:

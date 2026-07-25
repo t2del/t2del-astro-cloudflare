@@ -6,7 +6,7 @@ draft: false
 description: |
    Spring Brainy Kidz
 image:
-  src: /images/project/sbk.jpg
+  src: /images/project/sbk.webp
   srcscroll: /images/project/sbk.jpg
   alt: Spring Brainy Kidz
 category:

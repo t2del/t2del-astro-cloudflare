@@ -6,7 +6,7 @@ draft: false
 description: |
   
 image:
-  src: /images/project/begen.jpg
+  src: /images/project/begen.webp
   srcscroll: /images/project/begen.jpg
   alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 category:

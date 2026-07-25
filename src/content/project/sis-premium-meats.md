@@ -6,7 +6,7 @@ draft: false
 description: |
    Sis Premium Meats
 image:
-  src: /images/project/spm.jpg
+  src: /images/project/spm.webp
   srcscroll: /images/project/spm.jpg
   alt: Sis Premium Meats
 category:

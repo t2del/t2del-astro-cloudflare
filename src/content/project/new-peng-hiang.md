@@ -6,7 +6,7 @@ draft: false
 description: |
    New Peng Hiang was wisely named by the young Mr Khoo, who is the current Managing Director of the company
 image:
-  src: /images/project/nph.jpg
+  src: /images/project/nph.webp
   srcscroll: /images/project/nph.jpg
   alt: New Peng Hiang
 category:

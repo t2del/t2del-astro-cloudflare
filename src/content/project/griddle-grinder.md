@@ -6,7 +6,7 @@ draft: false
 description: |
    Griddle & Grinder
 image:
-  src: /images/project/griddler.jpg
+  src: /images/project/griddler.webp
   srcscroll: /images/project/griddler.jpg
   alt: Griddle & Grinder
 category:

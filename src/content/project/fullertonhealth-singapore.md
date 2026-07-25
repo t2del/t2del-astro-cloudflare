@@ -6,7 +6,7 @@ draft: false
 description: |
   Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
 image:
-  src: /images/project/fhgsg.jpg
+  src: /images/project/fhgsg.webp
   srcscroll: /images/project/fhgsg.png
   alt: Fullerton Health is a leading vertically integrated healthcare platform in the Asia region. Founded in Singapore in 2010
 category:

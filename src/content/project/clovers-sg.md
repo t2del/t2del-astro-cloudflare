@@ -6,7 +6,7 @@ draft: false
 description: |
   
 image:
-  src: /images/project/clovers.jpg
+  src: /images/project/clovers.webp
   srcscroll: /images/project/clovers.jpg
   alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 category:

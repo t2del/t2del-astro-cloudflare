@@ -6,7 +6,7 @@ draft: false
 description: |
   Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 image:
-  src: /images/project/asiamarketplace.jpg
+  src: /images/project/asiamarketplace.webp
   srcscroll: /images/project/asiamarketplace.jpg
   alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 category:

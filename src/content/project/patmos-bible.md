@@ -6,7 +6,7 @@ draft: false
 description: |
    Patmos Bible
 image:
-  src: /images/project/patmos.jpg
+  src: /images/project/patmos.webp
   srcscroll: /images/project/patmos.jpg
   alt: Patmos Bible
 category:

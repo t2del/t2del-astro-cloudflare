@@ -6,7 +6,7 @@ draft: false
 description: |
    The founders of Marvid International began business with pelican in 1992, originally as a sub-contractor for the assembly of flashlights.
 image:
-  src: /images/project/marvid.jpg
+  src: /images/project/marvid.webp
   srcscroll: /images/project/marvid.jpg
   alt: Marvid International
 category:

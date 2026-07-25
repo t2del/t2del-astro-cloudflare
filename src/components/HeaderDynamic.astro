@@ -1,5 +1,5 @@
 ---
-import Logo from "../assets/denmac.png";
+import Logo from "../assets/denmac.webp";
 import NavbarMenuItems from "./navigation/NavbarMenuItems.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 
@@ -35,9 +35,9 @@ const isHome =
       <div class="navbar-start xs:flex-1 sm:flex-1 md:flex-1 flex justify-center lg:justify-start">
         <a
           href={`${config.base}/`}
-          class="btn btn-ghost center text-xl lg:flex"
+          class=" "
         >
-          <img src={Logo.src} alt="Dennis Macapagal" decoding="async" fetchpriority="high" width="120" height="60" class="h4 w-20"/>
+          <img src={Logo.src} alt="Dennis Macapagal" fetchpriority="high" width="120" height="60" class="h4 w-20"/>
         </a>
       </div>
       <div class="hidden flex-none lg:block navbar-center">
@@ -47,7 +47,7 @@ const isHome =
       </div>
       <div class="navbar-end xs:flex-1 sm:flex-1 md:flex-1">
         <!-- <SearchModal /> -->
-        <ThemeToggle class="btn bth-ghost" />
+        <ThemeToggle class="btn btn-ghost" />
       </div>
     </div>
 
@@ -62,8 +62,8 @@ const isHome =
         >
           <img src={Logo.src} alt="Dennis Macapagal" fetchpriority="high" width="120" height="60" class="h4 w-20"/>
         </a>
-        <hr class="mt-[10px] mb-[10px] text-gray-100 dark:text-white">
-        <ul class="menu bg-base-200 min-h-full w-[100%] p-0">
+        <hr class="mt-2.5 mb-2.5 text-gray-100 dark:text-white">
+        <ul class="menu bg-base-200 min-h-full w-full p-0">
           <NavbarMenuItems />
         </ul>
     </div>

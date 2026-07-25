@@ -6,7 +6,7 @@ draft: false
 description: |
    Jinders Pte Ltd has debuted as a premier Indian fashion house in 1995, conceptualised and established by Madam Kuljinder Kaur. Her keen interest in fashion and distinct personal style & passion brought forth a shop that endeavours in bridal couture, Indian fashion pret-a-porter and haute couture, made to measure classic outfits and sarees, as well as stunning fashion jewellery.
 image:
-  src: /images/project/jinders.jpg
+  src: /images/project/jinders.webp
   srcscroll: /images/project/jinders.jpg
   alt: Jinders Pte Ltd has debuted as a premier Indian fashion house in 1995, conceptualised and established by Madam Kuljinder Kaur. Her keen interest in fashion and distinct personal style & passion brought forth a shop that endeavours in bridal couture, Indian fashion pret-a-porter and haute couture, made to measure classic outfits and sarees, as well as stunning fashion jewellery.
 category:

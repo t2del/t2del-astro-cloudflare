@@ -6,7 +6,7 @@ draft: false
 description: |
   
 image:
-  src: /images/project/dmontessori.jpg
+  src: /images/project/dmontessori.webp
   srcscroll: /images/project/dmontessori.jpg
   alt: DMontessori
 category:

@@ -19,7 +19,7 @@ export const metadata = {
   /** Site author name */
   author: "Dennis Macapagal",
   /** Default social sharing image */
-  image: "/images/site-image.jpg",
+  image: "/images/site-image.webp",
   /** Open Graph content type */
   type: "website" as const, // 'website' | 'article'
   email: "macapagal.dennis@gmail.com",

@@ -6,7 +6,7 @@ draft: false
 description: |
    MF Media
 image:
-  src: /images/project/mfmedia.jpg
+  src: /images/project/mfmedia.webp
   srcscroll: /images/project/mfmedia.jpg
   alt: MF Media
 category:

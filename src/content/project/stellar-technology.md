@@ -6,7 +6,7 @@ draft: false
 description: |
    Stellar Technology
 image:
-  src: /images/project/stellar.jpg
+  src: /images/project/stellar.webp
   srcscroll: /images/project/stellar.jpg
   alt: Stellar Technology
 category:

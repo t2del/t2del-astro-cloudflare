@@ -6,7 +6,7 @@ draft: false
 description: |
    Shang Antique is a well known antique shop in Singapore, specializing in genuine South East Asian antiques and boasting a high-quality reputation since 1984.
 image:
-  src: /images/project/shang.jpg
+  src: /images/project/shang.webp
   srcscroll: /images/project/shang.jpg
   alt: Shang Antique
 category:

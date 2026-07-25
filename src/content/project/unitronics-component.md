@@ -6,7 +6,7 @@ draft: false
 description: |
    Unitronics Component
 image:
-  src: /images/project/unitronic.jpg
+  src: /images/project/unitronic.webp
   srcscroll: /images/project/unitronic.jpg
   alt: Unitronics Component
 category:
