@@ -1,0 +1,98 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import { config, locale } from "@/consts";
+import Layout from '@layouts/Layout.astro'; // Adjust import path to your layout
+import OpenRemark from "@/components/OpenRemark.astro";
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+let postData = null;
+let sourceType = null; // 'wordpress' | 'local'
+
+// 1. Try WordPress API First
+try {
+  const res = await fetch(`${config.WP_BLOG_POST}?slug=${slug}&_embed`);
+  
+  if (res.ok) {
+    const wpPosts = await res.json();
+    if (Array.isArray(wpPosts) && wpPosts.length > 0) {
+      const wpPost = wpPosts[0];
+      
+      // Normalize WP data structure
+      postData = {
+        title: wpPost.title?.rendered ?? '',
+        content: wpPost.content?.rendered ?? '',
+        description: wpPost.excerpt?.rendered ?? '',
+        pubDate: new Date(wpPost.date),
+        image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null,
+      };
+      sourceType = 'wordpress';
+    }
+  }
+} catch (error) {
+  console.error('Error fetching WordPress post:', error);
+}
+
+// 2. Fallback to Astro Content Collection if WP didn't return a post
+if (!postData) {
+  const localPost = await getEntry('blog', slug);
+  
+  if (localPost) {
+    // Render MDX/Markdown content if local post exists
+    const { Content } = await await render(localPost);
+    
+    postData = {
+      title: localPost.data.title,
+      pubDate: new Date(localPost.data.pubDate),
+      image: localPost.data.heroImage ?? null,
+      Content, // Component for local Markdown/MDX
+      description: localPost.data.description ?? '',
+    };
+    sourceType = 'local';
+  }
+}
+
+// 3. If neither source returned a post, trigger a 404
+if (!postData) {
+  return Astro.redirect('/404');
+}
+
+// Extract properties for template
+const { title, pubDate, image, content, Content, description } = postData;
+---
+<Layout
+  title={title}
+  description={description}
+  image={image}
+  type="article"
+  isDynamic={true} maxWidth={true}
+>
+  <section class="py-5 prose max-w-full">
+   <article transition:name={`blog-card-${slug}`} class="">
+    <div class="container">
+      <div class="h-120 w-full rounded-md overflow-hidden relative">
+ 
+        {image && <img src={image} alt={title} class="w-full h-full object-cover m-0! p-0!" />}
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center justify-center px-4 text-center">
+          <h1 class="text-white text-2xl md:text-4xl font-bold mb-0" set:html={title} />
+        </div>
+      </div>
+      <div class="content-populated leading-7 text-[1.20rem] pt-6">
+        {/* If WP post, inject HTML safely. If Local post, render Content component */}
+        {sourceType === 'wordpress' ? (
+          <div set:html={content} />
+        ) : (
+          <Content />
+        )}
+      </div>
+      <p class="h-1"></p>
+      <OpenRemark />
+    </div>
+    </article>
+  </section>
+</Layout>
