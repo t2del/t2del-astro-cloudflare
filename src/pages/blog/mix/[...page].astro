@@ -11,7 +11,7 @@ const page = Number(Array.isArray(pageParam) ? pageParam[0] : pageParam) || 1;
 const perPage = config.NUM_POSTS_ON_MIX;
 
 // 2. Fetch Local Markdown/MDX Posts (Content Collections)
-const localPostsRaw = await getCollection('blog');
+const localPostsRaw = (await getCollection('blog')).filter((post) => !post.data.draft);
 
 // Normalize local posts to a unified structure
 const localPosts = localPostsRaw.map((post) => ({

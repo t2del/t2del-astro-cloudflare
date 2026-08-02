@@ -41,7 +41,7 @@ try {
 if (!postData) {
   const localPost = await getEntry('blog', slug);
   
-  if (localPost) {
+  if (localPost && !localPost.data.draft) {
     // Render MDX/Markdown content if local post exists
     const { Content } = await await render(localPost);
     
