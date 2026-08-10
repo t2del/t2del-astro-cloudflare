@@ -7,7 +7,7 @@ import { company } from "@/consts";
 
 // 1. Get all published projects
 const allProjects = (
-  await getCollection("projectsCollection", ({ data }) => data.draft !== true)
+  await getCollection("projects", ({ data }) => data.draft !== true)
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 // 2. Extract the companySlug from the URL query parameters

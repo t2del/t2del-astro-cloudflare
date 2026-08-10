@@ -83,7 +83,7 @@ const description = "Blogs";
 	<div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  2xl:grid-cols-4">  
       {paginatedPosts.map(post => (
         <CardBlogWP
-          url={`/blog/mix/${post.slug}/`}
+          url={`/blog/${post.slug}/`}
           image={post.image}
           title={post.title}
           slug={post.slug}
@@ -97,7 +97,7 @@ const description = "Blogs";
     <Pagination
       totalPages={totalPages}
       currentPage={page}
-      baseUrl="/blog/mix"
+      baseUrl="/blog/"
     />
   </section>
 </Layout>

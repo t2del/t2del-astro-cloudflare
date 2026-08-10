@@ -10,7 +10,7 @@ import { Splide, SplideSlide } from 'astro-splide';
 import type { Splide as SplideInterface } from 'astro-splide/splide'
 
 export async function getStaticPaths() {
-  const posts = await getCollection("projectsCollection", ({ data }) => {
+  const posts = await getCollection("projects", ({ data }) => {
     return data.draft !== true;
   });
   return posts.map((post) => {
@@ -34,7 +34,7 @@ if (!post) {
 const { Content } = await render(post);
 
 const posts2 = (
-  await getCollection("projectsCollection", ({ data, id }) => data.draft !== true && id !== post.id)
+  await getCollection("projects", ({ data, id }) => data.draft !== true && id !== post.id)
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
