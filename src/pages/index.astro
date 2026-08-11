@@ -7,12 +7,10 @@ import Card from '@components/common/CardProjects2.astro';
 import { Picture } from "astro:assets";
 import { fade } from "astro:transitions";
 import { render } from 'astro:content';
-import { Splide, SplideSlide } from 'astro-splide';
 
 
 // 1. Get your collection as you currently do
 const rawWork = await getCollection("work", ({ data }) => data.draft !== true);
-console.log("rawWork", rawWork);
 const sortedWork = rawWork.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 // 2. Pre-render the content for all entries
@@ -24,14 +22,11 @@ const work = await Promise.all(
 );
 // get projects and filter later by companySlug
 const projects = await getCollection("projects", ({ data }) => data.draft !== true);
-const postsPerPage = 5;
-
 const titleLayout = `Dennis Macapagal - Full-Stack Developer`;
 const description = "Minimal and lightweight blog and portfolio.";
-
 ---
 <Layout title={titleLayout} description={description} ga4={true} clarity={true} maxWidth={false}>
-  <section class="bg-grid sm:py-30 py-14  px-4 md:px-0">
+  <section class="bg-grid sm:py-110 py-60  px-4 md:px-0">
     <div class="container max-w-160 mx-auto">
       <h1 class="font-semibold md:text-4xl sm:text-3xl text-2xl text-center" transition:name="heading-1">
         Dennis Macapagal<span class="text-xl">👋🏻</span>
@@ -53,7 +48,7 @@ const description = "Minimal and lightweight blog and portfolio.";
   </section>
 
    <section class="z-50 py-8 bg-grid px-4 md:px-0" >
-    <div class="container mx-auto">
+    <div class="mx-auto max-w-405">
         <div class="mb-10">
           <div class="mt-2 mb-2 text-2xl font-bold">Work <span class=\"text-gray-500\">Experience.</span></div>
           <div class="w-16 h-1 bg-green-400/50 rounded"></div>
@@ -114,39 +109,11 @@ const description = "Minimal and lightweight blog and portfolio.";
                 {
                   // projects that belong to this company (matching companySlug to work entry slug)
                   (() => {
-                    const companyProjects = projects.filter((p) => p.data.companySlug === entry.data.companySlug);
+                    // limit projects shown per company to 4
+                    const companyProjects = projects.filter((p) => p.data.companySlug === entry.data.companySlug).slice(0, 4);
                     return companyProjects.length > 0 && (
                       <div class=" min-w-0 ">
-                        {companyProjects.length >= 5 ? (
-                          <Splide
-                            class=''
-                            options={ {
-                              perPage: 4,
-                              breakpoints: {
-                                1200: {
-                                  perPage: 3,
-                                },
-                                870: {
-                                  perPage: 2,
-                                },
-                              },
-                              rewind: true,
-                              gap: '1rem',
-                            } }
-                            aria-labelledby="basic-example-heading"
-                          >
-                            {companyProjects.map((p) => (
-                              <SplideSlide class="gap-2">
-                                <Card
-                                  data={p.data}
-                                  url={`/projects/${p.id}/`}
-                                  slug={p.id}
-                                />
-                              </SplideSlide>
-                            ))}
-                          </Splide>
-                        ) : (
-                          <div class="grid justify-items-center grid-cols-2 xs:grid-cols-2 md:grid-cols-4 gap-4">
+                          <div class="grid justify-items-center grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
                             {companyProjects.map((p) => (
                                 <Card
                                   data={p.data}
@@ -155,12 +122,15 @@ const description = "Minimal and lightweight blog and portfolio.";
                                 />
                             ))}
                           </div>
-                        )}
                       </div>
                     );
                   })()
                 }
+                <div class="text-center mt-2">
+                  <a href={`/projects?company=${entry.data.companySlug}`} class="text-[14px] hover:underline" aria-label={`View all projects for this ${entry.data.company}`}>View All</a>
+                </div>
                 {idx !== work.length - 1 && (
+                  
                   <hr class="mt-2.5 mb-2.5 border-b-accent border-gray-300"/>
                 )}
               </article>
